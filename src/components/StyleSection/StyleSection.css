@@ -1,0 +1,61 @@
+.bolshoy-sery-block {
+  max-width: 1200px;
+  margin: 60px auto;
+  padding: 0 20px;
+}
+
+.vnutri-serogo {
+  background-color: #F0F0F0;
+  border-radius: 40px;
+  padding: 60px;
+}
+
+.zagolovok-sekcii-stiley {
+  text-align: center;
+  font-size: 40px;
+  font-weight: 900;
+  margin-bottom: 40px;
+}
+
+.setka-stiley {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 250px;
+  gap: 20px;
+}
+
+.stil-kartochka {
+  background-color: #fff;
+  border-radius: 20px;
+  background-size: cover;
+  background-position: right center;
+  background-repeat: no-repeat;
+  padding: 20px;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.malenkaya {
+  grid-column: span 1;
+}
+
+.bolshaya {
+  grid-column: span 2;
+}
+
+
+@media (max-width: 768px) {
+  .vnutri-serogo {
+    padding: 30px;
+  }
+  .zagolovok-sekcii-stiley {
+    font-size: 28px;
+  }
+  .setka-stiley {
+    grid-template-columns: 1fr;
+    grid-auto-rows: 200px;
+  }
+  .malenkaya, .bolshaya {
+    grid-column: span 1;
+  }
+}

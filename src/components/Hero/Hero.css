@@ -1,0 +1,102 @@
+.glavniy-baner {
+  background-color: #F2F0F1;
+  padding: 40px 20px 0 20px;
+}
+
+.vnutri-banera {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.levaya-chast {
+  flex: 1;
+  padding-bottom: 40px;
+}
+
+.ogromniy-zagolovok {
+  font-size: 64px;
+  font-weight: 900;
+  line-height: 1;
+  margin-bottom: 20px;
+}
+
+.malenkiy-text {
+  color: #666;
+  margin-bottom: 30px;
+  max-width: 500px;
+  line-height: 1.5;
+}
+
+.knopka-v-magazine {
+  display: inline-block;
+  background: #000;
+  color: #fff;
+  padding: 15px 40px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 500;
+  margin-bottom: 40px;
+}
+
+.nashi-cifri {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.cifra-item h2 {
+  font-size: 32px;
+  margin: 0;
+}
+
+.cifra-item p {
+  color: #666;
+  margin: 0;
+  font-size: 14px;
+}
+
+.polochka {
+  width: 1px;
+  height: 50px;
+  background-color: #ccc;
+}
+
+.pravaya-chast-s-ludmi {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.fotka-modeley {
+  width: 100%;
+  max-width: 500px;
+  object-fit: cover;
+}
+
+
+@media (max-width: 900px) {
+  .vnutri-banera {
+    flex-direction: column;
+    text-align: center;
+  }
+  .ogromniy-zagolovok {
+    font-size: 40px;
+  }
+  .malenkiy-text {
+    margin: 0 auto 30px auto;
+  }
+  .nashi-cifri {
+    justify-content: center;
+  }
+  .hidden-mobile {
+    display: none;
+  }
+  .w-full-mobile {
+    width: 100%;
+    text-align: center;
+  }
+}

@@ -1,0 +1,69 @@
+.sekciya-otzivov {
+  max-width: 1200px;
+  margin: 60px auto;
+  padding: 0 20px;
+  overflow: hidden;
+}
+
+.shapka-otzivov {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.zagolovok-otzivov {
+  font-size: 40px;
+  font-weight: 900;
+  margin: 0;
+}
+
+.strelki button {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.polosa-s-otzivami {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 20px;
+}
+
+.otziv-kartochka {
+  min-width: 350px;
+  border: 1px solid #e0e0e0;
+  border-radius: 20px;
+  padding: 30px;
+  scroll-snap-align: center;
+}
+
+.zvezdi-otziva {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.imya-klienta {
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.text-otziva {
+  color: #666;
+  line-height: 1.5;
+}
+
+/* Адаптация */
+@media (max-width: 768px) {
+  .zagolovok-otzivov {
+    font-size: 28px;
+  }
+  .otziv-kartochka {
+    min-width: 280px;
+    padding: 20px;
+  }
+}

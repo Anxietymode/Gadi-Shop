@@ -1,0 +1,139 @@
+.sekciya-tovarov {
+  max-width: 1200px;
+  margin: 60px auto;
+  padding: 0 20px;
+  text-align: center;
+}
+
+.zagolovok-sekcii {
+  font-size: 40px;
+  font-weight: 900;
+  margin-bottom: 40px;
+  text-transform: uppercase;
+}
+
+.setka-tovarov {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  text-align: left;
+}
+
+.kartochka-tovara a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.fon-kartinki {
+  background-color: #F0EEED;
+  border-radius: 20px;
+  padding: 20px;
+  position: relative;
+  aspect-ratio: 4/5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  margin-bottom: 15px;
+}
+
+.fon-kartinki img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.kartochka-tovara:hover .fon-kartinki img {
+  transform: scale(1.05);
+}
+
+.knopki-kartochki {
+  position: absolute;
+  bottom: 10px;
+  display: flex;
+  gap: 10px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.kartochka-tovara:hover .knopki-kartochki {
+  opacity: 1;
+}
+
+.znachok-kartochki {
+  background: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.kartochka-tovara h3 {
+  font-size: 18px;
+  margin: 0 0 5px 0;
+}
+
+.zvezdochki {
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.zvezdochki span {
+  color: #666;
+}
+
+.cena {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.straya-cena {
+  color: #999;
+  text-decoration: line-through;
+  font-size: 18px;
+  margin-left: 10px;
+}
+
+.skidka {
+  background-color: #ffcccc;
+  color: #ff0000;
+  font-size: 12px;
+  padding: 3px 10px;
+  border-radius: 20px;
+  margin-left: 10px;
+  vertical-align: middle;
+}
+
+.centr-knopka a {
+  display: inline-block;
+  border: 1px solid #ccc;
+  padding: 10px 40px;
+  border-radius: 50px;
+  color: #000;
+  text-decoration: none;
+  margin-top: 30px;
+}
+
+.liniya-razdelitela {
+  max-width: 1200px;
+  margin: 0 auto;
+  border: none;
+  border-top: 1px solid #eee;
+}
+
+
+@media (max-width: 768px) {
+  .setka-tovarov {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+  .zagolovok-sekcii {
+    font-size: 28px;
+  }
+  .cena {
+    font-size: 18px;
+  }
+}

@@ -1,0 +1,152 @@
+.samiy-nizhniy-podval {
+  background-color: #F0F0F0;
+  margin-top: 150px; 
+  padding-bottom: 20px;
+}
+
+.vnutri-podvala {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  position: relative;
+}
+
+.chernaya-podpiska {
+  background-color: #000;
+  border-radius: 20px;
+  padding: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  top: -80px;
+  left: 20px;
+  right: 20px;
+}
+
+.zagolovok-podpiski {
+  color: #fff;
+  font-size: 32px;
+  margin: 0;
+}
+
+.forma-vvoda {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  max-width: 350px;
+}
+
+.input-pochti {
+  padding: 15px;
+  border-radius: 50px;
+  border: none;
+  outline: none;
+}
+
+.knopka-podpisatsya {
+  padding: 15px;
+  border-radius: 50px;
+  border: none;
+  background-color: #fff;
+  color: #000;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.vse-kolonki-podvala {
+  padding-top: 120px; 
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+  gap: 30px;
+}
+
+.logo-v-podvale {
+  font-size: 30px;
+  font-weight: 900;
+  display: block;
+  margin-bottom: 20px;
+}
+
+.opisanie-v-podvale {
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.soc-seti {
+  display: flex;
+  gap: 10px;
+}
+
+.soc-seti a {
+  width: 35px;
+  height: 35px;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #000;
+  text-decoration: none;
+}
+
+.kolonka-ssilok h3 {
+  font-size: 16px;
+  margin-bottom: 20px;
+  letter-spacing: 2px;
+}
+
+.kolonka-ssilok a {
+  display: block;
+  color: #666;
+  text-decoration: none;
+  margin-bottom: 10px;
+}
+
+.podvalnaya-liniya {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 40px 0 20px 0;
+}
+
+.avtorskie-prava {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #666;
+  font-size: 14px;
+}
+
+.iconki-platizhey {
+  display: flex;
+  gap: 10px;
+}
+
+.iconki-platizhey span {
+  background: #fff;
+  border: 1px solid #ddd;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+
+@media (max-width: 900px) {
+  .chernaya-podpiska {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+    padding: 30px 20px;
+  }
+  .zagolovok-podpiski {
+    font-size: 24px;
+  }
+  .vse-kolonki-podvala {
+    grid-template-columns: 1fr;
+    padding-top: 220px; 
+  }
+  .avtorskie-prava {
+    flex-direction: column;
+    gap: 15px;
+  }
+}
