@@ -35,6 +35,22 @@
   font-weight: bold;
 }
 
+.casual {
+  background-image: url("../../assets/Frame 61.png");
+}
+
+.formal {
+  background-image: url("../../assets/Frame 62.png");
+}
+
+.party {
+  background-image: url("../../assets/Frame 64.png");
+}
+
+.gym {
+  background-image: url("../../assets/Frame 63.png");
+}
+
 .malenkaya {
   grid-column: span 1;
 }
@@ -43,19 +59,75 @@
   grid-column: span 2;
 }
 
+@media (max-width: 1024px) {
+  .vnutri-serogo {
+    padding: 50px;
+  }
+
+  .zagolovok-sekcii-stiley {
+    font-size: 34px;
+  }
+
+  .setka-stiley {
+    grid-auto-rows: 220px;
+    gap: 16px;
+  }
+}
 
 @media (max-width: 768px) {
+  .bolshoy-sery-block {
+    margin: 40px auto;
+  }
+
   .vnutri-serogo {
     padding: 30px;
+    border-radius: 30px;
   }
+
   .zagolovok-sekcii-stiley {
     font-size: 28px;
+    margin-bottom: 30px;
   }
+
   .setka-stiley {
     grid-template-columns: 1fr;
     grid-auto-rows: 200px;
+    gap: 15px;
   }
+
   .malenkaya, .bolshaya {
     grid-column: span 1;
+  }
+
+  .stil-kartochka {
+    border-radius: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .bolshoy-sery-block {
+    margin: 30px auto;
+    padding: 0 16px;
+  }
+
+  .vnutri-serogo {
+    padding: 20px;
+    border-radius: 20px;
+  }
+
+  .zagolovok-sekcii-stiley {
+    font-size: 22px;
+    margin-bottom: 20px;
+  }
+
+  .setka-stiley {
+    grid-auto-rows: 180px;
+    gap: 12px;
+  }
+
+  .stil-kartochka {
+    border-radius: 14px;
+    padding: 15px;
+    font-size: 22px;
   }
 }

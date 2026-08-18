@@ -31,6 +31,11 @@
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   padding-bottom: 20px;
+  scrollbar-width: none;
+}
+
+.polosa-s-otzivami::-webkit-scrollbar {
+  display: none;
 }
 
 .otziv-kartochka {
@@ -39,6 +44,7 @@
   border-radius: 20px;
   padding: 30px;
   scroll-snap-align: center;
+  flex-shrink: 0;
 }
 
 .zvezdi-otziva {
@@ -57,13 +63,72 @@
   line-height: 1.5;
 }
 
-/* Адаптация */
+@media (max-width: 1024px) {
+  .zagolovok-otzivov {
+    font-size: 34px;
+  }
+
+  .otziv-kartochka {
+    min-width: 320px;
+  }
+}
+
 @media (max-width: 768px) {
+  .sekciya-otzivov {
+    margin: 40px auto;
+  }
+
+  .shapka-otzivov {
+    margin-bottom: 25px;
+  }
+
   .zagolovok-otzivov {
     font-size: 28px;
   }
+
   .otziv-kartochka {
     min-width: 280px;
+    padding: 24px;
+    border-radius: 16px;
+  }
+
+  .zvezdi-otziva {
+    font-size: 16px;
+  }
+
+  .imya-klienta {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .sekciya-otzivov {
+    margin: 30px auto;
+    padding: 0 16px;
+  }
+
+  .zagolovok-otzivov {
+    font-size: 24px;
+  }
+
+  .strelki button {
+    font-size: 20px;
+  }
+
+  .otziv-kartochka {
+    min-width: 260px;
     padding: 20px;
+  }
+
+  .zvezdi-otziva {
+    font-size: 14px;
+  }
+
+  .imya-klienta {
+    font-size: 15px;
+  }
+
+  .text-otziva {
+    font-size: 14px;
   }
 }

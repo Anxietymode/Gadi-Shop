@@ -19,12 +19,31 @@
   font-weight: bold;
 }
 
-/* Адаптация */
 @media (max-width: 768px) {
+  .polosa-brendov {
+    padding: 25px 20px;
+  }
+
   .vnutri-brendov {
     justify-content: center;
+    gap: 15px;
   }
+
   .vnutri-brendov span {
     font-size: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .polosa-brendov {
+    padding: 20px 16px;
+  }
+
+  .vnutri-brendov {
+    gap: 10px;
+  }
+
+  .vnutri-brendov span {
+    font-size: 20px;
   }
 }

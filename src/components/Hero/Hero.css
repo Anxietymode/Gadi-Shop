@@ -77,26 +77,103 @@
   object-fit: cover;
 }
 
+@media (max-width: 1024px) {
+  .ogromniy-zagolovok {
+    font-size: 52px;
+  }
+}
 
 @media (max-width: 900px) {
   .vnutri-banera {
     flex-direction: column;
     text-align: center;
   }
+
   .ogromniy-zagolovok {
-    font-size: 40px;
+    font-size: 44px;
   }
+
   .malenkiy-text {
     margin: 0 auto 30px auto;
   }
+
   .nashi-cifri {
     justify-content: center;
   }
+
   .hidden-mobile {
     display: none;
   }
+
   .w-full-mobile {
     width: 100%;
+    text-align: center;
+  }
+
+  .pravaya-chast-s-ludmi {
+    width: 100%;
+  }
+
+  .fotka-modeley {
+    max-width: 400px;
+    width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .glavniy-baner {
+    padding: 30px 16px 0 16px;
+  }
+
+  .ogromniy-zagolovok {
+    font-size: 36px;
+  }
+
+  .malenkiy-text {
+    font-size: 14px;
+  }
+
+  .knopka-v-magazine {
+    padding: 14px 32px;
+    font-size: 14px;
+  }
+
+  .nashi-cifri {
+    gap: 15px;
+  }
+
+  .cifra-item h2 {
+    font-size: 24px;
+  }
+
+  .cifra-item p {
+    font-size: 12px;
+  }
+
+  .polochka {
+    height: 35px;
+  }
+
+  .fotka-modeley {
+    max-width: 320px;
+  }
+}
+
+@media (max-width: 380px) {
+  .ogromniy-zagolovok {
+    font-size: 30px;
+  }
+
+  .nashi-cifri {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .polochka {
+    display: none;
+  }
+
+  .cifra-item {
     text-align: center;
   }
 }

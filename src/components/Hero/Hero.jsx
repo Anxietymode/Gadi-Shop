@@ -1,8 +1,7 @@
-import React from 'react';
 import './Hero.css';
 import Modelimg from "../../assets/b26fea69ccfd8aa5825862cdb9604a4fb4930464 (1).jpg"
 
-export default function Hero() {
+function Hero() {
   return (
     <section className="glavniy-baner">
       <div className="vnutri-banera">
@@ -34,3 +33,5 @@ export default function Hero() {
     </section>
   );
 }
+
+export default Hero;

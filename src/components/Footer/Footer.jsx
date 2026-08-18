@@ -1,7 +1,6 @@
-import React from 'react';
 import './Footer.css';
 
-export default function Footer() {
+function Footer() {
   return (
     <footer className="samiy-nizhniy-podval">
       <div className="vnutri-podvala">
@@ -72,3 +71,5 @@ export default function Footer() {
     </footer>
   );
 }
+
+export default Footer;

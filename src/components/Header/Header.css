@@ -18,6 +18,7 @@
   font-weight: 900;
   color: #000;
   text-decoration: none;
+  flex-shrink: 0;
 }
 
 .skolzyashee-menu {
@@ -41,6 +42,12 @@
   padding: 10px 20px;
 }
 
+.lupa {
+  font-size: 18px;
+  color: #888;
+  flex-shrink: 0;
+}
+
 .pole-poiska input {
   border: none;
   background: transparent;
@@ -52,21 +59,263 @@
 .karzina-i-profil {
   display: flex;
   gap: 15px;
+  flex-shrink: 0;
 }
 
 .znachok {
   background: none;
   border: none;
-  font-size: 20px;
+  font-size: 22px;
   cursor: pointer;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+  border-radius: 8px;
+  transition: background-color 0.2s ease;
 }
 
+.znachok:hover {
+  background-color: #f0f0f0;
+}
+
+.icon-filled-red {
+  color: #ff4444;
+}
+
+.knopka-s-badzheyom {
+  position: relative;
+}
+
+.badzhey {
+  position: absolute;
+  top: -4px;
+  right: -6px;
+  background: #ff4444;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  right: -40px;
+  margin-top: 10px;
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 16px;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+  width: 440px;
+  z-index: 1000;
+  padding: 24px;
+  animation: dropdownFadeIn 0.2s ease;
+}
+
+@keyframes dropdownFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.dropdown-menu h4 {
+  margin: 0 0 18px;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.pustoy-text {
+  color: #888;
+  text-align: center;
+  padding: 30px 0;
+  font-size: 15px;
+}
+
+.dropdown-menu ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 0;
+  border-bottom: 1px solid #f0f0f0;
+  transition: background-color 0.15s ease;
+}
+
+.dropdown-item:hover {
+  background-color: #fafafa;
+  margin: 0 -24px;
+  padding: 14px 24px;
+  border-radius: 8px;
+}
+
+.dropdown-item:last-child {
+  border-bottom: none;
+}
+
+.dropdown-item img {
+  width: 64px;
+  height: 64px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.dropdown-item-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 15px;
+}
+
+.dropdown-item-info span:first-child {
+  font-weight: 500;
+}
+
+.dropdown-item-details {
+  color: #888;
+  font-size: 13px;
+}
+
+.dropdown-item-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dropdown-item-actions button {
+  background: #f0f0f0;
+  border: none;
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.15s ease;
+}
+
+.dropdown-item-actions button:hover {
+  background: #e0e0e0;
+}
+
+.dropdown-item-actions span {
+  font-size: 15px;
+  font-weight: 500;
+  min-width: 20px;
+  text-align: center;
+}
+
+.dropdown-remove {
+  background: none !important;
+  color: #ff4444;
+  font-size: 16px !important;
+  transition: color 0.15s ease, transform 0.15s ease;
+}
+
+.dropdown-remove:hover {
+  color: #cc0000 !important;
+  transform: scale(1.15);
+}
+
+.dropdown-total {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 18px;
+  margin-top: 14px;
+  border-top: 2px solid #eee;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.burger-knopka {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 26px;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 8px;
+  transition: background-color 0.2s ease;
+}
+
+.burger-knopka:hover {
+  background-color: #f0f0f0;
+}
 
 @media (max-width: 900px) {
   .skolzyashee-menu {
-    display: none; 
+    display: none;
   }
+
   .pole-poiska {
-    display: none; 
+    display: none;
+  }
+
+  .burger-knopka {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .vnutri-shapki {
+    gap: 12px;
+  }
+}
+
+@media (max-width: 600px) {
+  .shapka {
+    padding: 15px 16px;
+  }
+
+  .glavniy-logotip {
+    font-size: 22px;
+  }
+
+  .znachok {
+    font-size: 20px;
+    padding: 4px;
+  }
+
+  .dropdown-menu {
+    position: fixed;
+    top: auto;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin-top: 0;
+    width: 100%;
+    max-height: 70vh;
+    border-radius: 20px 20px 0 0;
+    animation: slideUp 0.25s ease;
+  }
+
+  @keyframes slideUp {
+    from {
+      transform: translateY(100%);
+    }
+    to {
+      transform: translateY(0);
+    }
   }
 }

@@ -69,6 +69,20 @@
   height: 40px;
   cursor: pointer;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.znachok-kartochki:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.znachok-kartochki .icon-filled-red {
+  color: #ff4444;
 }
 
 .kartochka-tovara h3 {
@@ -90,14 +104,14 @@
   font-weight: bold;
 }
 
-.straya-cena {
+.staraya-cena {
   color: #999;
   text-decoration: line-through;
   font-size: 18px;
   margin-left: 10px;
 }
 
-.skidka {
+.skidka-teg {
   background-color: #ffcccc;
   color: #ff0000;
   font-size: 12px;
@@ -124,16 +138,101 @@
   border-top: 1px solid #eee;
 }
 
+@media (max-width: 1024px) {
+  .setka-tovarov {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+  }
+}
 
 @media (max-width: 768px) {
+  .sekciya-tovarov {
+    margin: 40px auto;
+  }
+
+  .zagolovok-sekcii {
+    font-size: 28px;
+    margin-bottom: 25px;
+  }
+
   .setka-tovarov {
     grid-template-columns: repeat(2, 1fr);
     gap: 15px;
   }
-  .zagolovok-sekcii {
-    font-size: 28px;
+
+  .fon-kartinki {
+    padding: 15px;
+    border-radius: 16px;
   }
+
+  .kartochka-tovara h3 {
+    font-size: 16px;
+  }
+
   .cena {
     font-size: 18px;
+  }
+
+  .knopki-kartochki {
+    opacity: 1;
+    bottom: 8px;
+  }
+
+  .znachok-kartochki {
+    width: 34px;
+    height: 34px;
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .sekciya-tovarov {
+    margin: 30px auto;
+    padding: 0 16px;
+  }
+
+  .zagolovok-sekcii {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+
+  .setka-tovarov {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .fon-kartinki {
+    padding: 10px;
+    border-radius: 12px;
+    aspect-ratio: 3/4;
+  }
+
+  .kartochka-tovara h3 {
+    font-size: 14px;
+  }
+
+  .zvezdochki {
+    font-size: 12px;
+  }
+
+  .cena {
+    font-size: 16px;
+  }
+
+  .staraya-cena {
+    font-size: 14px;
+    margin-left: 6px;
+  }
+
+  .skidka-teg {
+    font-size: 10px;
+    padding: 2px 8px;
+    margin-left: 6px;
+  }
+
+  .centr-knopka a {
+    padding: 8px 30px;
+    font-size: 14px;
+    margin-top: 20px;
   }
 }

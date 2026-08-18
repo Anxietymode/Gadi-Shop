@@ -1,5 +1,4 @@
-import React from 'react';
-import { Routes, Route } from 'react-router-dom'; 
+import { Routes, Route } from 'react-router-dom';
 import TopBar from './components/TopBar/TopBar';
 import Header from './components/Header/Header';
 import Hero from './components/Hero/Hero';
@@ -9,6 +8,7 @@ import StyleSection from './components/StyleSection/StyleSection';
 import Reviews from './components/Reviews/Reviews';
 import Footer from './components/Footer/Footer';
 import SingleProduct from './components/SingleProduct/SingleProduct';
+import './App.css';
 
 function HomePage() {
   return (
@@ -22,9 +22,9 @@ function HomePage() {
   );
 }
 
-export default function App() {
+function App() {
   return (
-    <div style={{ fontFamily: "'Poppins', sans-serif", overflowX: "hidden" }}>
+    <div className="app-container">
       <TopBar />
       <Header />
       
@@ -37,3 +37,5 @@ export default function App() {
     </div>
   );
 }
+
+export default App;

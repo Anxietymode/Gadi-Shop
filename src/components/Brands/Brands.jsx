@@ -1,7 +1,6 @@
-import React from 'react';
 import './Brands.css';
 
-export default function Brands() {
+function Brands() {
   return (
     <div className="polosa-brendov">
       <div className="vnutri-brendov">
@@ -14,3 +13,5 @@ export default function Brands() {
     </div>
   );
 }
+
+export default Brands;
