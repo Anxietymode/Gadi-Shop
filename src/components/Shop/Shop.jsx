@@ -60,12 +60,6 @@ function Shop() {
             {t('products.soon')}
             <span className="tochki-skoroo" aria-hidden="true"><i>.</i><i>.</i><i>.</i><i>.</i><i>.</i></span>
           </h3>
-          <div className="zvezdochki">{'⭐'.repeat(Math.floor(parseFloat(product.rating)))} <span>{product.rating}</span></div>
-          <div className="cena">
-            ${product.price}
-            {product.oldPrice && <span className="staraya-cena">${product.oldPrice}</span>}
-            {product.discount && <span className="skidka-teg">{product.discount}</span>}
-          </div>
         </Link>
       </div>
     );

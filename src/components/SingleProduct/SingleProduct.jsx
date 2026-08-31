@@ -260,12 +260,6 @@ function SingleProduct() {
             <Link to={`/product/${p.id}`} className="kartochka-tovara" key={p.id}>
               <div className="fon-kartinki" />
               <h3>{p.title}</h3>
-              <div className="zvezdochki">{renderStars(p.rating)} <span>{p.rating}</span></div>
-              <div className="cena">
-                ${p.price}
-                {p.oldPrice && <span className="staraya-cena">${p.oldPrice}</span>}
-                {p.discount && <span className="skidka-teg">{p.discount}</span>}
-              </div>
             </Link>
           ))}
         </div>
