@@ -27,14 +27,22 @@
 }
 
 .glavniy-logotip {
-  font-size: 26px;
-  font-weight: 900;
+  font-family: 'Cinzel', 'Poppins', serif;
+  font-size: 24px;
+  font-weight: 700;
   color: var(--text);
   text-decoration: none;
+  text-transform: uppercase;
   flex-shrink: 0;
-  letter-spacing: 1px;
+  letter-spacing: 3px;
   justify-self: start;
   white-space: nowrap;
+  transition: color 0.2s ease, text-shadow 0.2s ease;
+}
+
+.glavniy-logotip:hover {
+  color: #ffffff;
+  text-shadow: 0 0 26px rgba(255, 255, 255, 0.6), 0 0 60px rgba(255, 255, 255, 0.25);
 }
 
 .skolzyashee-menu {

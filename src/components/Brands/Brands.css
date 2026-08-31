@@ -1,11 +1,12 @@
 .polosa-brendov {
-  background:
-    radial-gradient(600px 300px at 50% 0%, rgba(255, 255, 255, 0.05), transparent 70%),
-    var(--bg-deep);
-  padding: 30px 0;
-  border-bottom: 1px solid var(--border);
-  overflow: hidden;
   position: relative;
+  overflow: hidden;
+  padding: 40px 0;
+  border-bottom: 1px solid var(--border);
+  background:
+    radial-gradient(800px 300px at 15% 50%, rgba(255, 255, 255, 0.035), transparent 65%),
+    radial-gradient(800px 300px at 85% 50%, rgba(255, 255, 255, 0.03), transparent 65%),
+    var(--bg-deep);
 }
 
 .polosa-brendov::before,
@@ -14,7 +15,7 @@
   position: absolute;
   top: 0;
   bottom: 0;
-  width: 120px;
+  width: 140px;
   z-index: 2;
   pointer-events: none;
 }
@@ -36,15 +37,17 @@
 .vnutri-brendov {
   max-width: 100%;
   margin: 0 auto;
+  position: relative;
+  z-index: 1;
 }
 
 .begushchie-brendi {
   display: flex;
-  gap: 80px;
+  gap: 90px;
   align-items: center;
   white-space: nowrap;
   width: max-content;
-  animation: llevutBrendi 28s linear infinite;
+  animation: llevutBrendi 30s linear infinite;
 }
 
 @keyframes llevutBrendi {
@@ -53,55 +56,57 @@
 }
 
 .begushchie-brendi span {
-  color: var(--text);
-  font-size: 32px;
-  font-weight: bold;
-  opacity: 0.7;
   flex-shrink: 0;
-  transition: opacity 0.2s ease, color 0.2s ease, transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+  font-family: 'Cinzel', 'Poppins', serif;
+  font-size: 30px;
+  font-weight: 600;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.55);
+  text-shadow: 0 0 18px rgba(255, 255, 255, 0.25);
+  opacity: 0.85;
   cursor: default;
-  background: linear-gradient(90deg, rgba(255,255,255,0.25), #fff, rgba(255,255,255,0.25));
-  background-size: 200% 100%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: bleskTeksta 4s linear infinite;
+  padding: 8px 14px;
+  border-radius: 12px;
+  transition: opacity 0.25s ease, transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+    text-shadow 0.25s ease, background 0.25s ease, -webkit-text-stroke 0.25s ease;
 }
 
 .begushchie-brendi span:hover {
-  transform: scale(1.08);
-  animation-play-state: paused;
-}
-
-@keyframes bleskTeksta {
-  from { background-position: 0% 0; }
-  to { background-position: -200% 0; }
+  opacity: 1;
+  transform: scale(1.06) translateY(-2px);
+  background: rgba(255, 255, 255, 0.05);
+  -webkit-text-stroke: 1px #ffffff;
+  text-shadow: 0 0 28px rgba(255, 255, 255, 0.65), 0 0 60px rgba(255, 255, 255, 0.3);
 }
 
 @media (max-width: 768px) {
   .polosa-brendov {
-    padding: 25px 0;
+    padding: 30px 0;
   }
 
   .begushchie-brendi {
-    gap: 50px;
+    gap: 60px;
   }
 
   .begushchie-brendi span {
-    font-size: 24px;
+    font-size: 22px;
+    letter-spacing: 4px;
   }
 }
 
 @media (max-width: 480px) {
   .polosa-brendov {
-    padding: 20px 0;
+    padding: 24px 0;
   }
 
   .begushchie-brendi {
-    gap: 40px;
+    gap: 45px;
   }
 
   .begushchie-brendi span {
-    font-size: 20px;
+    font-size: 18px;
+    letter-spacing: 3px;
   }
 }

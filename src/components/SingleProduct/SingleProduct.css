@@ -93,17 +93,37 @@
 }
 
 .cena-tovara {
-  font-size: 32px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 19px;
   font-weight: bold;
   margin-bottom: 20px;
-  display: flex;
-  align-items: center;
-  gap: 15px;
+  padding: 10px 18px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50px;
 }
 
 .cena-tovara .star-icon.filled, .zvezdi-tovara .star-icon.filled {
   color: var(--neon);
   filter: drop-shadow(0 0 6px var(--neon-glow));
+}
+
+.cena-tovara .staraya-cena {
+  color: var(--text-dim);
+  text-decoration: line-through;
+  font-size: 16px;
+}
+
+.cena-tovara .skidka-teg {
+  background-color: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--neon);
+  color: var(--neon);
+  font-size: 11px;
+  padding: 3px 10px;
+  border-radius: 50px;
+  text-shadow: 0 0 8px var(--neon-glow);
 }
 
 .staraya-cena {
@@ -671,7 +691,8 @@
   }
 
   .cena-tovara {
-    font-size: 24px;
+    font-size: 14px;
+    padding: 7px 12px;
   }
 
   .vkladki-tovara {
@@ -745,9 +766,19 @@
   }
 
   .cena-tovara {
-    font-size: 22px;
+    font-size: 13px;
     margin-bottom: 15px;
-    gap: 10px;
+    gap: 6px;
+    padding: 6px 10px;
+  }
+
+  .cena-tovara .staraya-cena {
+    font-size: 12px;
+  }
+
+  .cena-tovara .skidka-teg {
+    font-size: 10px;
+    padding: 2px 8px;
   }
 
   .staraya-cena {

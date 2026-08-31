@@ -70,7 +70,7 @@ function App() {
       <ScrollReveal path={location.pathname} />
       <ScrollProgress />
       <Header />
-      
+
       <div className="stranitsa-fade" key={location.pathname}>
         <Routes>
           <Route path="/" element={<HomePage />} />
@@ -78,7 +78,7 @@ function App() {
           <Route path="/product/:id" element={<SingleProduct />} />
         </Routes>
       </div>
-      
+
       <Footer />
     </div>
   );

@@ -258,9 +258,17 @@
 }
 
 .cena {
-  font-size: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 15px;
   font-weight: bold;
-  transition: color 0.3s ease, text-shadow 0.3s ease;
+  padding: 10px 16px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50px;
+  transition: color 0.3s ease, text-shadow 0.3s ease, background 0.3s ease, border-color 0.3s ease;
 }
 
 .kartochka-tovara:hover .cena {
@@ -271,8 +279,8 @@
 .staraya-cena {
   color: var(--text-dim);
   text-decoration: line-through;
-  font-size: 18px;
-  margin-left: 10px;
+  font-size: 13px;
+  margin-left: 4px;
 }
 
 .skidka-teg {
@@ -280,9 +288,9 @@
   border: 1px solid var(--neon);
   color: var(--neon);
   font-size: 12px;
-  padding: 3px 10px;
-  border-radius: 20px;
-  margin-left: 10px;
+  padding: 3px 9px;
+  border-radius: 50px;
+  margin-left: 4px;
   vertical-align: middle;
   text-shadow: 0 0 8px var(--neon-glow);
 }
@@ -348,7 +356,8 @@
   }
 
   .cena {
-    font-size: 18px;
+    font-size: 12px;
+    padding: 6px 10px;
   }
 
   .knopki-kartochki {
@@ -399,18 +408,20 @@
   }
 
   .cena {
-    font-size: 16px;
+    font-size: 11px;
+    padding: 5px 8px;
+    gap: 4px;
   }
 
   .staraya-cena {
-    font-size: 14px;
-    margin-left: 6px;
+    font-size: 10px;
+    margin-left: 3px;
   }
 
   .skidka-teg {
-    font-size: 10px;
-    padding: 2px 8px;
-    margin-left: 6px;
+    font-size: 9px;
+    padding: 1px 6px;
+    margin-left: 3px;
   }
 
   .centr-knopka a {

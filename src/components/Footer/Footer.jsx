@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { FaTiktok, FaTelegram, FaInstagram } from 'react-icons/fa';
 import KrovnyePodtyki from '../BloodDrips/BloodDrips';
 import { useLang } from '../../i18n/useLang';
 import './Footer.css';
@@ -21,9 +22,9 @@ function Footer() {
             <Link to="/" className="logo-v-podvale">GADI'S HOPE</Link>
             <p className="opisanie-v-podvale">{t('footer.description')}</p>
             <div className="soc-seti">
-              <a href="https://twitter.com" target="_blank" rel="noreferrer" aria-label="Twitter">T</a>
-              <a href="https://instagram.com" target="_blank" rel="noreferrer" aria-label="Instagram">I</a>
-              <a href="https://facebook.com" target="_blank" rel="noreferrer" aria-label="Facebook">F</a>
+              <a href="https://tiktok.com" target="_blank" rel="noreferrer" aria-label="TikTok"><FaTiktok /></a>
+              <a href="https://t.me/Gadishope" target="_blank" rel="noreferrer" aria-label="Telegram"><FaTelegram /></a>
+              <a href="https://instagram.com" target="_blank" rel="noreferrer" aria-label="Instagram"><FaInstagram /></a>
             </div>
           </div>
 
