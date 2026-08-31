@@ -111,7 +111,7 @@ const translations = {
       resources: 'RESOURCES',
       resourcesLinks: ['Free eBooks', 'Development Tutorial', 'How to - Blog', 'Youtube Playlist'],
       rights: 'GADI\'S HOPE © 2025-2026, All Rights Reserved',
-      payments: ['Visa', 'Mastercard', 'PayPal', 'Apple Pay'],
+      payments: ['Mir', 'SBP', 'Ozon', 'Sber'],
     },
   },
   ru: {
@@ -222,7 +222,7 @@ const translations = {
       resources: 'РЕСУРСЫ',
       resourcesLinks: ['Бесплатные книги', 'Обучающие материалы', 'Блог', 'YouTube-плейлист'],
       rights: 'GADI\'S HOPE © 2025-2026, Все права защищены',
-      payments: ['Visa', 'Mastercard', 'PayPal', 'Apple Pay'],
+      payments: ['Мир', 'СБП', 'Ozon', 'Сбер'],
     },
   },
 };
