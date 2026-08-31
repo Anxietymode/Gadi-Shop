@@ -81,12 +81,13 @@
 }
 
 .ogromniy-zagolovok {
+  font-family: 'Cinzel', 'Poppins', serif;
   font-size: 64px;
-  font-weight: 900;
+  font-weight: 700;
   line-height: 1;
   margin-bottom: 20px;
   text-transform: uppercase;
-  letter-spacing: -1px;
+  letter-spacing: 2px;
 }
 
 .ogromniy-zagolovok span {
