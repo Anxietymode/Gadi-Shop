@@ -7,6 +7,7 @@ import ProductsList from './components/ProductsList/ProductsList';
 import Footer from './components/Footer/Footer';
 import SingleProduct from './components/SingleProduct/SingleProduct';
 import Shop from './components/Shop/Shop';
+import Starfall from './components/Starfall/Starfall';
 import './App.css';
 
 function ScrollReveal({ path }) {
@@ -65,6 +66,7 @@ function App() {
 
   return (
     <div className="app-container">
+      <Starfall />
       <ScrollReveal path={location.pathname} />
       <ScrollProgress />
       <Header />

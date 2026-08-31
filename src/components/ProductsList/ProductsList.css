@@ -197,6 +197,57 @@
   transition: color 0.3s ease;
 }
 
+.nazvanie-skoroo {
+  display: inline-flex;
+  align-items: baseline;
+  font-weight: 900;
+  font-size: 30px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--text);
+  text-shadow: 0 0 18px var(--neon-glow);
+}
+
+.nazvanie-skoroo .tochki-skoroo i {
+  font-style: normal;
+  display: inline-block;
+  animation: pryzhok-tochki 1.4s ease-in-out infinite;
+}
+
+.nazvanie-skoroo .tochki-skoroo i:nth-child(1) { animation-delay: 0s; }
+.nazvanie-skoroo .tochki-skoroo i:nth-child(2) { animation-delay: 0.16s; }
+.nazvanie-skoroo .tochki-skoroo i:nth-child(3) { animation-delay: 0.32s; }
+.nazvanie-skoroo .tochki-skoroo i:nth-child(4) { animation-delay: 0.48s; }
+.nazvanie-skoroo .tochki-skoroo i:nth-child(5) { animation-delay: 0.64s; }
+
+.kartochka-tovara:hover .tochki-skoroo i {
+  animation-duration: 0.8s;
+}
+
+@keyframes pryzhok-tochki {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+    opacity: 0.35;
+    text-shadow: none;
+  }
+  30% {
+    transform: translateY(-16px) scale(1.35);
+    opacity: 1;
+    text-shadow: 0 10px 20px var(--neon-glow);
+  }
+  55% {
+    transform: translateY(0) scale(1);
+    opacity: 0.8;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tochki-skoroo i {
+    animation: none;
+    opacity: 1;
+  }
+}
+
 .zvezdochki {
   font-size: 14px;
   margin-bottom: 10px;
@@ -291,6 +342,11 @@
     font-size: 16px;
   }
 
+  .nazvanie-skoroo {
+    font-size: 22px;
+    letter-spacing: 2px;
+  }
+
   .cena {
     font-size: 18px;
   }
@@ -331,6 +387,11 @@
 
   .kartochka-tovara h3 {
     font-size: 14px;
+  }
+
+  .nazvanie-skoroo {
+    font-size: 18px;
+    letter-spacing: 1px;
   }
 
   .zvezdochki {

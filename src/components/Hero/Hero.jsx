@@ -1,5 +1,7 @@
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState } from 'react';
+import { FaTelegram } from 'react-icons/fa';
 import KrovnyePodtyki from '../BloodDrips/BloodDrips';
+import { useLang } from '../../i18n/useLang';
 import './Hero.css';
 
 const FULL_TEXT = 'MATCHES YOUR STYLE';
@@ -39,40 +41,9 @@ function Typewriter({ text }) {
   return <span>{display}<span className="migayushchiy-kursor">|</span></span>;
 }
 
-function CountUp({ end, suffix }) {
-  const [value, setValue] = useState(0);
-  const ref = useRef(null);
-  const started = useRef(false);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && !started.current) {
-          started.current = true;
-          observer.disconnect();
-          const duration = 1600;
-          const t0 = performance.now();
-          const tick = (t) => {
-            const p = Math.min((t - t0) / duration, 1);
-            const eased = 1 - Math.pow(1 - p, 3);
-            setValue(Math.round(end * eased));
-            if (p < 1) requestAnimationFrame(tick);
-          };
-          requestAnimationFrame(tick);
-        }
-      },
-      { threshold: 0.4 }
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, [end]);
-
-  return <h2 ref={ref}>{value.toLocaleString('en-US')}{suffix}</h2>;
-}
-
 function Hero() {
+  const { t } = useLang();
+
   function shopNow() {
     document.getElementById('new-arrivals')?.scrollIntoView({ behavior: 'smooth' });
   }
@@ -87,23 +58,13 @@ function Hero() {
           <h1 className="ogromniy-zagolovok">
             FIND CLOTHES THAT <Typewriter text={FULL_TEXT} />
           </h1>
-          <p className="malenkiy-text">Browse through our diverse range of meticulously crafted garments, designed to bring out your individuality and cater to your sense of style.</p>
-          <a href="#" className="knopka-v-magazine" onClick={(e) => { e.preventDefault(); shopNow(); }}>Shop Now</a>
-          <div className="nashi-cifri">
-            <div className="cifra-item">
-              <CountUp end={200} suffix="+" />
-              <p>International Brands</p>
-            </div>
-            <div className="polochka"></div>
-            <div className="cifra-item">
-              <CountUp end={2000} suffix="+" />
-              <p>High-Quality Products</p>
-            </div>
-            <div className="polochka hidden-mobile"></div>
-            <div className="cifra-item w-full-mobile">
-              <CountUp end={30000} suffix="+" />
-              <p>Happy Customers</p>
-            </div>
+          <p className="malenkiy-text">{t('hero.tagline')}</p>
+          <div className="deystviya-geroya">
+            <a href="#" className="knopka-v-magazine" onClick={(e) => { e.preventDefault(); shopNow(); }}>{t('hero.shopNow')}</a>
+            <a href="https://t.me/Gadishope" target="_blank" rel="noopener noreferrer" className="telegram-banner" data-scroll>
+              <span className="telegram-znachok"><FaTelegram /></span>
+              <span className="telegram-text">{t('hero.telegram')}</span>
+            </a>
           </div>
         </div>
       </div>

@@ -20,24 +20,53 @@
 .vnutri-shapki {
   max-width: 1200px;
   margin: 0 auto;
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  justify-content: space-between;
   gap: 20px;
 }
 
 .glavniy-logotip {
-  font-size: 28px;
+  font-size: 26px;
   font-weight: 900;
   color: var(--text);
   text-decoration: none;
   flex-shrink: 0;
   letter-spacing: 1px;
+  justify-self: start;
+  white-space: nowrap;
 }
 
 .skolzyashee-menu {
   display: flex;
-  gap: 20px;
+  gap: 28px;
+  justify-self: center;
+}
+
+.pravaya-chast {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  justify-self: end;
+}
+
+.pereklyuchatel-yazyka {
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  cursor: pointer;
+  padding: 8px 14px;
+  border-radius: 8px;
+  transition: border-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.pereklyuchatel-yazyka:hover {
+  border-color: var(--neon);
+  color: var(--neon);
+  box-shadow: 0 0 12px var(--neon-glow);
 }
 
 .skolzyashee-menu button {
@@ -73,83 +102,6 @@
 
 .skolzyashee-menu button:hover {
   color: var(--neon);
-}
-
-.pole-poiska {
-  flex: 1;
-  max-width: 400px;
-  background-color: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 50px;
-  display: flex;
-  align-items: center;
-  padding: 10px 20px;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
-}
-
-.pole-poiska:focus-within {
-  border-color: var(--neon);
-  box-shadow: 0 0 16px var(--neon-glow);
-}
-
-.lupa {
-  font-size: 18px;
-  color: var(--text-dim);
-  flex-shrink: 0;
-}
-
-.pole-poiska input {
-  border: none;
-  background: transparent;
-  width: 100%;
-  outline: none;
-  margin-left: 10px;
-  color: var(--text);
-}
-
-.pole-poiska input::placeholder {
-  color: var(--text-dim);
-}
-
-.pole-poiska {
-  position: relative;
-}
-
-.rezultati-poiska {
-  position: absolute;
-  top: calc(100% + 10px);
-  left: 0;
-  right: 0;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
-  z-index: 1000;
-  padding: 8px;
-  max-height: 320px;
-  overflow-y: auto;
-}
-
-.rezultat-poiskovoy-item {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  padding: 12px 14px;
-  border-radius: 10px;
-  text-decoration: none;
-  color: var(--text);
-  transition: background-color 0.15s ease;
-}
-
-.rezultat-poiskovoy-item:hover {
-  background: var(--surface-2);
-}
-
-.rezultat-poiskovoy-item .cena-rezultata {
-  color: var(--text-muted);
-  font-weight: 600;
-  flex-shrink: 0;
 }
 
 .dropdown-item-link {
@@ -592,10 +544,6 @@
 
 @media (max-width: 900px) {
   .skolzyashee-menu {
-    display: none;
-  }
-
-  .pole-poiska {
     display: none;
   }
 

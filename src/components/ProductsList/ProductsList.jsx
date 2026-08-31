@@ -4,11 +4,13 @@ import { addToCart } from '../../store/cartSlice';
 import { toggleWishlist } from '../../store/wishlistSlice';
 import { IoHeart, IoHeartOutline, IoCartOutline } from 'react-icons/io5';
 import products from '../../data/products';
+import { useLang } from '../../i18n/useLang';
 import './ProductsList.css';
 
 function ProductsList() {
   const dispatch = useDispatch();
   const wishlist = useSelector((state) => state.wishlist);
+  const { t } = useLang();
 
   const newProducts = products.filter((p) => p.section === 'new');
   const topProducts = products.filter((p) => p.section === 'top');
@@ -38,7 +40,10 @@ function ProductsList() {
           </div>
         </div>
         <Link to={`/product/${product.id}`}>
-          <h3>{product.title}</h3>
+          <h3 className="nazvanie-skoroo">
+            {t('products.soon')}
+            <span className="tochki-skoroo" aria-hidden="true"><i>.</i><i>.</i><i>.</i><i>.</i><i>.</i></span>
+          </h3>
           <div className="zvezdochki">{'⭐'.repeat(Math.floor(parseFloat(product.rating)))} <span>{product.rating}</span></div>
           <div className="cena">
             ${product.price}
@@ -53,24 +58,24 @@ function ProductsList() {
   return (
     <>
       <section className="sekciya-tovarov" id="new-arrivals" data-scroll>
-        <h2 className="zagolovok-sekcii">NEW ARRIVALS</h2>
+        <h2 className="zagolovok-sekcii">{t('products.newArrivals')}</h2>
         <div className="setka-tovarov">
           {newProducts.map(renderCard)}
         </div>
         <div className="centr-knopka">
-          <Link to="/shop">View All</Link>
+          <Link to="/shop">{t('products.viewAll')}</Link>
         </div>
       </section>
       
       <hr className="liniya-razdelitela" />
 
       <section className="sekciya-tovarov" id="top-selling" data-scroll>
-        <h2 className="zagolovok-sekcii">TOP SELLING</h2>
+        <h2 className="zagolovok-sekcii">{t('products.topSelling')}</h2>
         <div className="setka-tovarov">
           {topProducts.map(renderCard)}
         </div>
         <div className="centr-knopka">
-          <Link to="/shop">View All</Link>
+          <Link to="/shop">{t('products.viewAll')}</Link>
         </div>
       </section>
     </>

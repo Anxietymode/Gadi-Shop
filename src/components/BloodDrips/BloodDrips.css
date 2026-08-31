@@ -25,6 +25,27 @@
   transform: translateX(-50%);
   display: block;
   filter: drop-shadow(0 6px 10px rgba(110, 10, 15, 0.38));
+  transform-origin: 50% 100%;
+  animation: potyok-zmeyka 3.2s cubic-bezier(0.45, 0, 0.55, 1) var(--zaderzhka, 0s) infinite;
+}
+
+@keyframes potyok-zmeyka {
+  0%, 100% {
+    transform: translateX(-50%) translateY(0) scaleX(0.55) scaleY(0.35);
+    filter: drop-shadow(0 4px 6px rgba(110, 10, 15, 0.3));
+  }
+  25% {
+    transform: translateX(-52%) translateY(-6px) scaleX(1.6) scaleY(1.2);
+    filter: drop-shadow(0 10px 20px rgba(110, 10, 15, 0.7));
+  }
+  50% {
+    transform: translateX(-50%) translateY(4px) scaleX(0.7) scaleY(1.7);
+    filter: drop-shadow(0 6px 12px rgba(110, 10, 15, 0.45));
+  }
+  75% {
+    transform: translateX(-48%) translateY(-3px) scaleX(1.8) scaleY(0.95);
+    filter: drop-shadow(0 8px 18px rgba(110, 10, 15, 0.65));
+  }
 }
 
 .kaplyusha {
@@ -81,5 +102,9 @@
   .kaplyusha {
     animation: none;
     opacity: 0;
+  }
+  .potyok {
+    animation: none;
+    transform: translateX(-50%);
   }
 }

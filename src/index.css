@@ -1,3 +1,5 @@
+@import './styles/crazy-effects.css';
+
 *,
 *::before,
 *::after {
@@ -100,6 +102,65 @@ textarea {
 [data-scroll].revealed {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* ---------- ЗВЁЗДОПАД НА ЗАДНЕМ ФОНЕ ---------- */
+.starfield {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.starfield .zvezda {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.7);
+  opacity: 0.7;
+  animation: zvezda-mertsanie var(--dur, 3s) ease-in-out var(--delay, 0s) infinite;
+}
+
+.starfield .padayushchaya-zvezda {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  background: #fff;
+  animation: zvezda-letit var(--trail, 6s) linear var(--delay2, 0s) infinite;
+}
+
+.padayushchaya-zvezda::after {
+  content: '';
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  width: 120px;
+  height: 1px;
+  transform-origin: left center;
+  transform: rotate(-35deg);
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.9), transparent);
+}
+
+@keyframes zvezda-mertsanie {
+  0%, 100% { opacity: 0.15; transform: scale(0.7); }
+  50% { opacity: 0.9; transform: scale(1.2); }
+}
+
+@keyframes zvezda-letit {
+  0% { transform: translate(-10vw, -5vh); opacity: 0; }
+  5% { opacity: 1; }
+  15% { opacity: 0; }
+  100% { transform: translate(110vw, 65vh); opacity: 0; }
+}
+
+@media (max-width: 768px) {
+  .padayushchaya-zvezda::after {
+    width: 70px;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

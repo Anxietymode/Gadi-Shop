@@ -3,8 +3,8 @@ import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { removeFromWishlist } from '../../store/wishlistSlice';
 import { removeFromCart, clearCart, increaseQuantity, decreaseQuantity } from '../../store/cartSlice';
-import { IoSearchOutline, IoHeart, IoHeartOutline, IoCart, IoCartOutline, IoClose, IoRemoveOutline, IoAddOutline, IoCheckmarkCircle } from 'react-icons/io5';
-import products from '../../data/products';
+import { IoHeart, IoHeartOutline, IoCart, IoCartOutline, IoClose, IoRemoveOutline, IoAddOutline, IoCheckmarkCircle } from 'react-icons/io5';
+import { useLang } from '../../i18n/useLang';
 import './Header.css';
 
 function Header() {
@@ -12,23 +12,18 @@ function Header() {
   const [isLikeOpen, setIsLikeOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [query, setQuery] = useState('');
   const [checkoutDone, setCheckoutDone] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
   const cart = useSelector((state) => state.cart);
   const wishlist = useSelector((state) => state.wishlist);
-  const searchRef = useRef(null);
   const menuRef = useRef(null);
+  const { t, lang, toggle } = useLang();
 
   const cartCount = cart.reduce((sum, item) => sum + item.quantity, 0);
   const wishlistCount = wishlist.length;
   const cartTotal = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
-
-  const searchResults = query.trim()
-    ? products.filter((p) => p.title.toLowerCase().includes(query.trim().toLowerCase()))
-    : [];
 
   const anyPanelOpen = isCartOpen || isLikeOpen;
 
@@ -36,7 +31,6 @@ function Header() {
     setIsCartOpen(false);
     setIsLikeOpen(false);
     setIsMenuOpen(false);
-    setQuery('');
   }
 
   function openCart() {
@@ -73,7 +67,6 @@ function Header() {
 
   useEffect(() => {
     function handleClickOutside(e) {
-      if (searchRef.current && !searchRef.current.contains(e.target)) setQuery('');
       if (menuRef.current && !menuRef.current.contains(e.target)) setIsMenuOpen(false);
     }
     document.addEventListener('mousedown', handleClickOutside);
@@ -126,7 +119,7 @@ function Header() {
           <div className="dropdown-item-info">
             <span>{item.title}</span>
             <span className="dropdown-item-details">
-              {item.size && `Size: ${item.size}`}
+              {item.size && `${t('cart.size')}: ${item.size}`}
               {item.color && ` | Color: ${item.color}`}
             </span>
             <span>${item.price} × {item.quantity}</span>
@@ -152,56 +145,37 @@ function Header() {
     <>
       <header className={`shapka ${scrolled ? 'scrolled' : ''}`}>
         <div className="vnutri-shapki">
-          <Link to="/" className="glavniy-logotip" onClick={closeAll}>gadi shope</Link>
+          <Link to="/" className="glavniy-logotip" onClick={closeAll}>GADI'S HOPE</Link>
 
           <nav className="skolzyashee-menu">
-            <button onClick={() => { closeAll(); navigate('/shop'); }}>Shop</button>
-            <button onClick={() => scrollToSection('top-selling')}>On Sale</button>
-            <button onClick={() => scrollToSection('new-arrivals')}>New Arrivals</button>
-            <button onClick={() => scrollToSection('brands')}>Brands</button>
+            <button onClick={() => { closeAll(); navigate('/shop'); }}>{t('nav.shop')}</button>
+            <button onClick={() => scrollToSection('top-selling')}>{t('nav.onSale')}</button>
+            <button onClick={() => scrollToSection('new-arrivals')}>{t('nav.newArrivals')}</button>
+            <button onClick={() => scrollToSection('brands')}>{t('nav.brands')}</button>
           </nav>
 
-          <div className="pole-poiska" ref={searchRef}>
-            <IoSearchOutline className="lupa" />
-            <input
-              type="text"
-              placeholder="Search for products..."
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-            />
-            {query.trim() && (
-              <div className="rezultati-poiska">
-                {searchResults.length === 0 ? (
-                  <p className="pustoy-text">No products found</p>
-                ) : (
-                  searchResults.map((p) => (
-                    <Link key={p.id} to={`/product/${p.id}`} className="rezultat-poiskovoy-item" onClick={closeAll}>
-                      <span>{p.title}</span>
-                      <span className="cena-rezultata">${p.price}</span>
-                    </Link>
-                  ))
-                )}
+          <div className="pravaya-chast">
+            <button className="pereklyuchatel-yazyka" aria-label="Switch language" onClick={toggle}>
+              {lang === 'ru' ? 'EN' : 'RU'}
+            </button>
+            <button className="burger-knopka" aria-label="Меню" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+              {isMenuOpen ? <IoClose /> : '☰'}
+            </button>
+
+            <div className="karzina-i-profil">
+              <div className="knopka-s-badzheyom">
+                <button className="znachok" aria-label="Избранное" onClick={openWishlist}>
+                  {wishlistCount > 0 ? <IoHeart className="icon-filled-red" /> : <IoHeartOutline />}
+                  {wishlistCount > 0 && <span className="badzhey">{wishlistCount}</span>}
+                </button>
               </div>
-            )}
-          </div>
 
-          <button className="burger-knopka" aria-label="Меню" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-            {isMenuOpen ? <IoClose /> : '☰'}
-          </button>
-
-          <div className="karzina-i-profil">
-            <div className="knopka-s-badzheyom">
-              <button className="znachok" aria-label="Избранное" onClick={openWishlist}>
-                {wishlistCount > 0 ? <IoHeart className="icon-filled-red" /> : <IoHeartOutline />}
-                {wishlistCount > 0 && <span className="badzhey">{wishlistCount}</span>}
-              </button>
-            </div>
-
-            <div className="knopka-s-badzheyom">
-              <button className="znachok" aria-label="Корзина" onClick={openCart}>
-                {cartCount > 0 ? <IoCart /> : <IoCartOutline />}
-                {cartCount > 0 && <span className="badzhey">{cartCount}</span>}
-              </button>
+              <div className="knopka-s-badzheyom">
+                <button className="znachok" aria-label="Корзина" onClick={openCart}>
+                  {cartCount > 0 ? <IoCart /> : <IoCartOutline />}
+                  {cartCount > 0 && <span className="badzhey">{cartCount}</span>}
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -209,10 +183,10 @@ function Header() {
 
       {isMenuOpen && (
         <div className="mobilnoe-menyu" ref={menuRef}>
-          <button onClick={() => { closeAll(); navigate('/shop'); }}>Shop</button>
-          <button onClick={() => scrollToSection('top-selling')}>On Sale</button>
-          <button onClick={() => scrollToSection('new-arrivals')}>New Arrivals</button>
-          <button onClick={() => scrollToSection('brands')}>Brands</button>
+          <button onClick={() => { closeAll(); navigate('/shop'); }}>{t('nav.shop')}</button>
+          <button onClick={() => scrollToSection('top-selling')}>{t('nav.onSale')}</button>
+          <button onClick={() => scrollToSection('new-arrivals')}>{t('nav.newArrivals')}</button>
+          <button onClick={() => scrollToSection('brands')}>{t('nav.brands')}</button>
         </div>
       )}
 
@@ -221,8 +195,8 @@ function Header() {
       <aside className={`pane-drawer ${isLikeOpen ? 'open' : ''}`} aria-hidden={!isLikeOpen} aria-label="Wishlist">
         <div className="pane-head">
           <div>
-            <h3>Wishlist</h3>
-            <span className="pane-sub">{wishlistCount} items</span>
+            <h3>{t('cart.wishlist')}</h3>
+            <span className="pane-sub">{t('cart.wishlistItems', { count: wishlistCount })}</span>
           </div>
           <button className="pane-close" onClick={closeAll} aria-label="Close"><IoClose /></button>
         </div>
@@ -231,8 +205,8 @@ function Header() {
           {wishlist.length === 0 ? (
             <div className="pane-pusto">
               <IoHeartOutline className="pane-pusto-icon" />
-              <p>Your wishlist is empty</p>
-              <Link to="/shop" className="pane-pusto-link" onClick={closeAll}>Explore products</Link>
+              <p>{t('cart.emptyWishlist')}</p>
+              <Link to="/shop" className="pane-pusto-link" onClick={closeAll}>{t('cart.explore')}</Link>
             </div>
           ) : (
             <ul className="pane-list">{wishlist.map(renderWishlistItem)}</ul>
@@ -243,8 +217,8 @@ function Header() {
       <aside className={`pane-drawer ${isCartOpen ? 'open' : ''}`} aria-hidden={!isCartOpen} aria-label="Shopping cart">
         <div className="pane-head">
           <div>
-            <h3>Shopping Cart</h3>
-            <span className="pane-sub">{cartCount} items</span>
+            <h3>{t('cart.cart')}</h3>
+            <span className="pane-sub">{t('cart.wishlistItems', { count: cartCount })}</span>
           </div>
           <button className="pane-close" onClick={closeAll} aria-label="Close"><IoClose /></button>
         </div>
@@ -253,15 +227,15 @@ function Header() {
           {checkoutDone ? (
             <div className="pane-uspeh">
               <IoCheckmarkCircle className="pane-uspeh-icon" />
-              <h4>Order placed!</h4>
-              <p>Thank you for shopping with gadi shope.</p>
-              <Link to="/shop" className="pane-pusto-link" onClick={closeAll}>Continue shopping</Link>
+              <h4>{t('cart.orderPlaced')}</h4>
+              <p>{t('cart.thankYou')}</p>
+              <Link to="/shop" className="pane-pusto-link" onClick={closeAll}>{t('cart.continue')}</Link>
             </div>
           ) : cart.length === 0 ? (
             <div className="pane-pusto">
               <IoCartOutline className="pane-pusto-icon" />
-              <p>Your cart is empty</p>
-              <Link to="/shop" className="pane-pusto-link" onClick={closeAll}>Explore products</Link>
+              <p>{t('cart.emptyCart')}</p>
+              <Link to="/shop" className="pane-pusto-link" onClick={closeAll}>{t('cart.explore')}</Link>
             </div>
           ) : (
             <>
@@ -273,10 +247,10 @@ function Header() {
         {!checkoutDone && cart.length > 0 && (
           <div className="pane-foot">
             <div className="pane-total">
-              <span>Total</span>
+              <span>{t('cart.subtotal')}</span>
               <span>${cartTotal}</span>
             </div>
-            <button className="pane-cta" onClick={checkout}>Proceed to Checkout</button>
+            <button className="pane-cta" onClick={checkout}>{t('cart.checkout')}</button>
           </div>
         )}
       </aside>

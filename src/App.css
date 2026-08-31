@@ -1,6 +1,7 @@
 .app-container {
   overflow-x: hidden;
   min-height: 100vh;
+  position: relative;
 }
 
 .polosa-progress {

@@ -5,6 +5,7 @@ import { addToCart } from '../../store/cartSlice';
 import { IoCheckmark, IoStar, IoStarOutline, IoCheckmarkCircle, IoEllipsisHorizontal, IoAddOutline } from 'react-icons/io5';
 import products from '../../data/products';
 import KrovnyePodtyki from '../BloodDrips/BloodDrips';
+import { useLang } from '../../i18n/useLang';
 import '../ProductsList/ProductsList.css';
 import './SingleProduct.css';
 
@@ -23,16 +24,10 @@ const INITIAL_REVIEWS = [
   { id: 6, name: 'Emma L.', rating: 4, date: 'September 18, 2023', text: 'Beautiful shirt, exactly as pictured. Would recommend to a friend.' },
 ];
 
-const FAQS = [
-  { q: 'What is your return policy?', a: 'You can return any item within 30 days of delivery for a full refund, as long as it is unworn and in its original state.' },
-  { q: 'How do I find my size?', a: 'Check the size guide on each product page. If you are between sizes, we recommend ordering the larger option.' },
-  { q: 'How long does shipping take?', a: 'Standard shipping takes 3-5 business days, while express shipping arrives in 1-2 business days.' },
-  { q: 'Do you ship internationally?', a: 'Yes, we ship worldwide. Shipping costs and times are calculated at checkout based on your location.' },
-];
-
 function SingleProduct() {
   let { id } = useParams();
   const dispatch = useDispatch();
+  const { t } = useLang();
 
   const [quantity, setQuantity] = useState(1);
   const [activeSize, setActiveSize] = useState('Large');
@@ -115,7 +110,7 @@ function SingleProduct() {
     <div className="stranica-tovara">
       <KrovnyePodtyki className="krov-v-kataloge" items={KROV_V_KATALOGE} />
       <div className="hlebnie-kroshki">
-        <Link to="/">Home</Link> &gt; <Link to="/shop">Shop</Link> &gt; <span>{product.title}</span>
+        <Link to="/">{t('product.home')}</Link> &gt; <Link to="/shop">{t('product.shop')}</Link> &gt; <span>{product.title}</span>
       </div>
 
       <div className="verh-tovara" data-scroll>
@@ -128,13 +123,13 @@ function SingleProduct() {
             {product.discount && <span className="skidka-teg">{product.discount}</span>}
           </div>
           <p className="opisanie-text">
-            This graphic t-shirt which is perfect for any occasion. Crafted from a soft and breathable fabric, it offers superior comfort and style.
+            {t('product.description')}
           </p>
 
           <hr className="razdelitel" />
 
           <div className="vibor-cveta">
-            <p>Select Colors</p>
+            <p>{t('product.selectColors')}</p>
             <div className="cvetnie-krugi">
               <button className={`krug-cvet cvet-1 ${activeColor === 'color1' ? 'aktivniy-cvet' : ''}`} onClick={() => setActiveColor('color1')} aria-label="Black">
                 {activeColor === 'color1' && <IoCheckmark />}
@@ -151,9 +146,9 @@ function SingleProduct() {
           <hr className="razdelitel" />
 
           <div className="vibor-razmera">
-            <p>Choose Size</p>
+            <p>{t('product.chooseSize')}</p>
             <div className="knopki-razmerov">
-              {['Small', 'Medium', 'Large', 'X-Large'].map((s) => (
+              {t('product.sizes').map((s) => (
                 <button key={s} className={`knopka-razmer ${activeSize === s ? 'aktivniy-razmer' : ''}`} onClick={() => setActiveSize(s)}>{s}</button>
               ))}
             </div>
@@ -167,28 +162,25 @@ function SingleProduct() {
               <span>{quantity}</span>
               <button onClick={increaseQuantity}>+</button>
             </div>
-            <button className="knopka-v-korzinu" onClick={handleAddToCart}>Add to Cart</button>
+            <button className="knopka-v-korzinu" onClick={handleAddToCart}>{t('product.addToCart')}</button>
           </div>
         </div>
       </div>
 
       <div className="vkladki-tovara" data-scroll>
-        <button className={`vkladka ${activeTab === 'details' ? 'aktivnaya-vkladka' : ''}`} onClick={() => setActiveTab('details')}>Product Details</button>
-        <button className={`vkladka ${activeTab === 'reviews' ? 'aktivnaya-vkladka' : ''}`} onClick={() => setActiveTab('reviews')}>Rating & Reviews</button>
-        <button className={`vkladka ${activeTab === 'faqs' ? 'aktivnaya-vkladka' : ''}`} onClick={() => setActiveTab('faqs')}>FAQs</button>
+        <button className={`vkladka ${activeTab === 'details' ? 'aktivnaya-vkladka' : ''}`} onClick={() => setActiveTab('details')}>{t('product.details')}</button>
+        <button className={`vkladka ${activeTab === 'reviews' ? 'aktivnaya-vkladka' : ''}`} onClick={() => setActiveTab('reviews')}>{t('product.reviews')}</button>
+        <button className={`vkladka ${activeTab === 'faqs' ? 'aktivnaya-vkladka' : ''}`} onClick={() => setActiveTab('faqs')}>{t('product.faqs')}</button>
       </div>
 
       {activeTab === 'details' && (
         <div className="vnutri-vkladki" data-scroll>
-          <h3>Product Details</h3>
+          <h3>{t('product.detailsTitle')}</h3>
           <p className="opisanie-text">
-            Crafted from a soft and breathable blend of cotton and polyester, this piece keeps you comfortable all day long.
+            {t('product.detailsDesc')}
           </p>
           <ul className="spisok-harakteristik">
-            <li>Premium quality fabric, 100% cotton</li>
-            <li>Relaxed, true-to-size fit</li>
-            <li>Machine washable, durable print</li>
-            <li>Available in multiple colors and sizes</li>
+            {t('product.features').map((f, i) => <li key={i}>{f}</li>)}
           </ul>
         </div>
       )}
@@ -196,19 +188,19 @@ function SingleProduct() {
       {activeTab === 'reviews' && (
         <div className="sekciya-otzivov-tovara" data-scroll>
           <div className="shapka-otzivov">
-            <h3>All Reviews <span className="cifra-otzivov">({reviews.length})</span></h3>
+            <h3>{t('product.allReviews')} <span className="cifra-otzivov">({reviews.length})</span></h3>
             <div className="upravlenie-otzivami">
               <select className="vipadashka" value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
-                <option value="latest">Latest</option>
-                <option value="highest">Highest Rating</option>
+                <option value="latest">{t('product.latest')}</option>
+                <option value="highest">{t('product.highest')}</option>
               </select>
-              <button className="napisat-otziv" onClick={() => setShowForm(!showForm)}>Write a Review</button>
+              <button className="napisat-otziv" onClick={() => setShowForm(!showForm)}>{t('product.writeReview')}</button>
             </div>
           </div>
 
           {showForm && (
             <form className="forma-otziva" onSubmit={submitReview}>
-              <p>Leave a review</p>
+              <p>{t('product.leaveReview')}</p>
               <div className="zvezdi-formi">
                 {[1, 2, 3, 4, 5].map((n) => (
                   <button type="button" key={n} onClick={() => setStarRating(n)} aria-label={`${n} stars`}>
@@ -216,9 +208,9 @@ function SingleProduct() {
                   </button>
                 ))}
               </div>
-              <input type="text" placeholder="Your name" value={author} onChange={(e) => setAuthor(e.target.value)} />
-              <textarea placeholder="Share your thoughts..." value={comment} onChange={(e) => setComment(e.target.value)} />
-              <button type="submit" className="knopka-v-korzinu">Submit Review</button>
+              <input type="text" placeholder={t('product.yourName')} value={author} onChange={(e) => setAuthor(e.target.value)} />
+              <textarea placeholder={t('product.shareThoughts')} value={comment} onChange={(e) => setComment(e.target.value)} />
+              <button type="submit" className="knopka-v-korzinu">{t('product.submitReview')}</button>
             </form>
           )}
 
@@ -227,19 +219,19 @@ function SingleProduct() {
               <div className="kartochka-otziva" key={r.id}>
                 <div className="verh-otziva">
                   <div className="zvezdochki">{renderReviewStars(r.rating)}</div>
-                  {r.isNew && <span className="noviy-otziv-teg">New</span>}
+                  {r.isNew && <span className="noviy-otziv-teg">{t('product.new')}</span>}
                   <button className="troetochie" aria-label="More"><IoEllipsisHorizontal /></button>
                 </div>
                 <h4>{r.name} <IoCheckmarkCircle className="galochka-icon" /></h4>
                 <p>"{r.text}"</p>
-                <span className="data-otziva">Posted on {r.date}</span>
+                <span className="data-otziva">{t('product.postedOn', { date: r.date })}</span>
               </div>
             ))}
           </div>
 
           {visibleCount < reviews.length && (
             <div className="knopka-zagruzit-eshe">
-              <button onClick={() => setVisibleCount((c) => c + 2)}><IoAddOutline /> Load More Reviews</button>
+              <button onClick={() => setVisibleCount((c) => c + 2)}><IoAddOutline /> {t('product.loadMore')}</button>
             </div>
           )}
         </div>
@@ -247,9 +239,9 @@ function SingleProduct() {
 
       {activeTab === 'faqs' && (
         <div className="vnutri-vkladki" data-scroll>
-          <h3>Frequently Asked Questions</h3>
+          <h3>{t('product.faqsTitle')}</h3>
           <div className="spisok-fak">
-            {FAQS.map((f, i) => (
+            {t('faqs').map((f, i) => (
               <div className="fak-vopros" key={i}>
                 <button className={`fak-zagolovok ${openFaq === i ? 'otkritiy' : ''}`} onClick={() => setOpenFaq(openFaq === i ? -1 : i)}>
                   {f.q}
@@ -262,7 +254,7 @@ function SingleProduct() {
       )}
 
       <div className="pohozhie-tovari" data-scroll>
-        <h2 className="zagolovok-pohozhih">YOU MIGHT ALSO LIKE</h2>
+        <h2 className="zagolovok-pohozhih">{t('product.youMightLike')}</h2>
         <div className="setka-pohozhih">
           {products.filter((p) => p.id !== id).slice(0, 4).map((p) => (
             <Link to={`/product/${p.id}`} className="kartochka-tovara" key={p.id}>
