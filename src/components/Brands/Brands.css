@@ -57,10 +57,9 @@
 
 .begushchie-brendi span {
   flex-shrink: 0;
-  font-family: 'Cinzel', 'Poppins', serif;
-  font-size: 30px;
-  font-weight: 600;
-  letter-spacing: 6px;
+  font-size: 32px;
+  font-weight: 900;
+  letter-spacing: 2px;
   text-transform: uppercase;
   color: transparent;
   -webkit-text-stroke: 1px rgba(255, 255, 255, 0.55);
@@ -92,7 +91,7 @@
 
   .begushchie-brendi span {
     font-size: 22px;
-    letter-spacing: 4px;
+    letter-spacing: 1px;
   }
 }
 
@@ -107,6 +106,6 @@
 
   .begushchie-brendi span {
     font-size: 18px;
-    letter-spacing: 3px;
+    letter-spacing: 1px;
   }
 }
