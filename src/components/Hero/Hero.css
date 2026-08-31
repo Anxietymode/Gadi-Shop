@@ -87,6 +87,7 @@
   margin-bottom: 20px;
   text-transform: uppercase;
   letter-spacing: -1px;
+  white-space: nowrap;
 }
 
 .ogromniy-zagolovok span {
@@ -259,7 +260,7 @@
 
 @media (max-width: 1024px) {
   .ogromniy-zagolovok {
-    font-size: 52px;
+    font-size: 44px;
   }
 }
 
@@ -276,7 +277,7 @@
   }
 
   .ogromniy-zagolovok {
-    font-size: 44px;
+    font-size: 38px;
   }
 
   .malenkiy-text {
@@ -295,7 +296,7 @@
   }
 
   .ogromniy-zagolovok {
-    font-size: 36px;
+    font-size: 24px;
   }
 
   .malenkiy-text {
@@ -320,7 +321,7 @@
 
 @media (max-width: 380px) {
   .ogromniy-zagolovok {
-    font-size: 30px;
+    font-size: 19px;
   }
 
   .telegram-znachok {
