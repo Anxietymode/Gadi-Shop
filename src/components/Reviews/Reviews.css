@@ -16,40 +16,57 @@
   font-size: 40px;
   font-weight: 900;
   margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
-.strelki button {
-  background: none;
-  border: none;
-  font-size: 24px;
-  cursor: pointer;
+.galochka-ok {
+  color: var(--neon);
+  margin-left: 4px;
 }
 
 .polosa-s-otzivami {
-  display: flex;
-  gap: 20px;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  padding-bottom: 20px;
-  scrollbar-width: none;
+  overflow: hidden;
+  margin: 0 -20px;
+  padding: 10px 20px;
 }
 
-.polosa-s-otzivami::-webkit-scrollbar {
-  display: none;
+.begushchie-otzivi {
+  display: flex;
+  gap: 20px;
+  width: max-content;
+  animation: krugiOtzivov 55s linear infinite;
+}
+
+.begushchie-otzivi:hover {
+  animation-play-state: paused;
+}
+
+@keyframes krugiOtzivov {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
 }
 
 .otziv-kartochka {
-  min-width: 350px;
-  border: 1px solid #e0e0e0;
+  width: 380px;
+  background: var(--card);
+  border: 1px solid var(--border);
   border-radius: 20px;
   padding: 30px;
-  scroll-snap-align: center;
   flex-shrink: 0;
+  transition: border-color 0.35s ease, box-shadow 0.35s ease, transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.otziv-kartochka:hover {
+  transform: translateY(-4px);
+  border-color: var(--neon);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.6), 0 0 22px var(--neon-glow);
 }
 
 .zvezdi-otziva {
   font-size: 18px;
   margin-bottom: 10px;
+  filter: drop-shadow(0 0 6px var(--neon-glow));
 }
 
 .imya-klienta {
@@ -59,7 +76,7 @@
 }
 
 .text-otziva {
-  color: #666;
+  color: var(--text-muted);
   line-height: 1.5;
 }
 
@@ -69,7 +86,7 @@
   }
 
   .otziv-kartochka {
-    min-width: 320px;
+    width: 340px;
   }
 }
 
@@ -87,7 +104,7 @@
   }
 
   .otziv-kartochka {
-    min-width: 280px;
+    width: 280px;
     padding: 24px;
     border-radius: 16px;
   }
@@ -111,12 +128,8 @@
     font-size: 24px;
   }
 
-  .strelki button {
-    font-size: 20px;
-  }
-
   .otziv-kartochka {
-    min-width: 260px;
+    width: 260px;
     padding: 20px;
   }
 

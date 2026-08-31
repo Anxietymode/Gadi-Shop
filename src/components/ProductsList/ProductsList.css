@@ -10,6 +10,41 @@
   font-weight: 900;
   margin-bottom: 40px;
   text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+  display: inline-block;
+  padding-bottom: 12px;
+}
+
+.zagolovok-sekcii::after {
+  content: ' ✦';
+  color: var(--neon);
+  text-shadow: 0 0 16px var(--neon-glow);
+  display: inline-block;
+  animation: mertsanie 2.4s ease-in-out infinite;
+}
+
+@keyframes mertsanie {
+  0%, 100% { opacity: 1; transform: scale(1) rotate(0deg); }
+  50% { opacity: 0.5; transform: scale(1.25) rotate(15deg); }
+}
+
+.zagolovok-sekcii::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 70%;
+  height: 3px;
+  border-radius: 3px;
+  background: linear-gradient(90deg, transparent, var(--neon), transparent);
+  transform: translateX(-50%) scaleX(0);
+  transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.15s;
+  box-shadow: 0 0 12px var(--neon-glow);
+}
+
+.sekciya-tovarov.revealed .zagolovok-sekcii::before {
+  transform: translateX(-50%) scaleX(1);
 }
 
 .setka-tovarov {
@@ -19,13 +54,55 @@
   text-align: left;
 }
 
+.sekciya-tovarov.revealed .kartochka-tovara {
+  animation: kartochkaVhod 0.6s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+}
+
+.sekciya-tovarov.revealed .kartochka-tovara:nth-child(1) { animation-delay: 0s; }
+.sekciya-tovarov.revealed .kartochka-tovara:nth-child(2) { animation-delay: 0.08s; }
+.sekciya-tovarov.revealed .kartochka-tovara:nth-child(3) { animation-delay: 0.16s; }
+.sekciya-tovarov.revealed .kartochka-tovara:nth-child(4) { animation-delay: 0.24s; }
+.sekciya-tovarov.revealed .kartochka-tovara:nth-child(5) { animation-delay: 0.32s; }
+.sekciya-tovarov.revealed .kartochka-tovara:nth-child(6) { animation-delay: 0.4s; }
+.sekciya-tovarov.revealed .kartochka-tovara:nth-child(7) { animation-delay: 0.48s; }
+.sekciya-tovarov.revealed .kartochka-tovara:nth-child(8) { animation-delay: 0.56s; }
+
+@keyframes kartochkaVhod {
+  from {
+    opacity: 0;
+    transform: translateY(34px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
 .kartochka-tovara a {
   text-decoration: none;
   color: inherit;
 }
 
+.kartochka-tovara {
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.kartochka-tovara:hover {
+  transform: translateY(-6px);
+}
+
+.kartochka-tovara:hover .fon-kartinki {
+  border-color: var(--neon);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.6), 0 0 24px var(--neon-glow);
+}
+
+.kartochka-tovara:hover h3 {
+  color: var(--neon);
+}
+
 .fon-kartinki {
-  background-color: #F0EEED;
+  background: linear-gradient(180deg, var(--surface-2), var(--card));
+  border: 1px solid var(--border);
   border-radius: 20px;
   padding: 20px;
   position: relative;
@@ -35,17 +112,38 @@
   justify-content: center;
   overflow: hidden;
   margin-bottom: 15px;
+  transition: box-shadow 0.35s ease, border-color 0.35s ease, transform 0.35s ease;
 }
 
-.fon-kartinki img {
-  width: 100%;
+.fon-kartinki::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(300px 200px at var(--mx, 50%) var(--my, 50%), rgba(255,255,255,0.08), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+}
+
+.kartochka-tovara:hover .fon-kartinki::before {
+  opacity: 1;
+}
+
+.fon-kartinki::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
   height: 100%;
-  object-fit: contain;
-  transition: transform 0.3s ease;
+  background: linear-gradient(105deg, transparent, rgba(255, 255, 255, 0.12), transparent);
+  transform: skewX(-18deg);
+  transition: left 0.7s ease;
+  pointer-events: none;
 }
 
-.kartochka-tovara:hover .fon-kartinki img {
-  transform: scale(1.05);
+.kartochka-tovara:hover .fon-kartinki::after {
+  left: 160%;
 }
 
 .knopki-kartochki {
@@ -62,32 +160,41 @@
 }
 
 .znachok-kartochki {
-  background: #fff;
-  border: none;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
   border-radius: 50%;
   width: 40px;
   height: 40px;
   cursor: pointer;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 18px;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  color: var(--text);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, color 0.2s ease;
 }
 
 .znachok-kartochki:hover {
   transform: scale(1.1);
-  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  color: var(--neon);
+  box-shadow: 0 0 14px var(--neon-glow);
+}
+
+.znachok-kartochki:active {
+  transform: scale(0.9);
 }
 
 .znachok-kartochki .icon-filled-red {
-  color: #ff4444;
+  color: var(--neon);
+  text-shadow: 0 0 12px var(--neon-glow);
 }
 
 .kartochka-tovara h3 {
   font-size: 18px;
   margin: 0 0 5px 0;
+  color: var(--text);
+  transition: color 0.3s ease;
 }
 
 .zvezdochki {
@@ -96,46 +203,61 @@
 }
 
 .zvezdochki span {
-  color: #666;
+  color: var(--text-muted);
 }
 
 .cena {
   font-size: 24px;
   font-weight: bold;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.kartochka-tovara:hover .cena {
+  color: var(--neon);
+  text-shadow: 0 0 14px var(--neon-glow);
 }
 
 .staraya-cena {
-  color: #999;
+  color: var(--text-dim);
   text-decoration: line-through;
   font-size: 18px;
   margin-left: 10px;
 }
 
 .skidka-teg {
-  background-color: #ffcccc;
-  color: #ff0000;
+  background-color: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--neon);
+  color: var(--neon);
   font-size: 12px;
   padding: 3px 10px;
   border-radius: 20px;
   margin-left: 10px;
   vertical-align: middle;
+  text-shadow: 0 0 8px var(--neon-glow);
 }
 
 .centr-knopka a {
   display: inline-block;
-  border: 1px solid #ccc;
+  border: 1px solid var(--border);
   padding: 10px 40px;
   border-radius: 50px;
-  color: #000;
+  color: var(--text);
   text-decoration: none;
   margin-top: 30px;
+  transition: border-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.centr-knopka a:hover {
+  border-color: var(--neon);
+  color: var(--neon);
+  box-shadow: 0 0 16px var(--neon-glow);
 }
 
 .liniya-razdelitela {
   max-width: 1200px;
   margin: 0 auto;
   border: none;
-  border-top: 1px solid #eee;
+  border-top: 1px solid var(--border);
 }
 
 @media (max-width: 1024px) {

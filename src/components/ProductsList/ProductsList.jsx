@@ -15,12 +15,12 @@ function ProductsList() {
 
   function handleAddToCart(e, product) {
     e.preventDefault();
-    dispatch(addToCart({ id: product.id, title: product.title, price: product.price, image: product.image, quantity: 1 }));
+    dispatch(addToCart({ id: product.id, title: product.title, price: product.price, quantity: 1 }));
   }
 
   function handleToggleWishlist(e, product) {
     e.preventDefault();
-    dispatch(toggleWishlist({ id: product.id, title: product.title, price: product.price, image: product.image }));
+    dispatch(toggleWishlist({ id: product.id, title: product.title, price: product.price }));
   }
 
   function renderCard(product) {
@@ -28,7 +28,6 @@ function ProductsList() {
     return (
       <div className="kartochka-tovara" key={product.id}>
         <div className="fon-kartinki">
-          <img src={product.image} alt={product.title} />
           <div className="knopki-kartochki">
             <button className="znachok-kartochki" onClick={(e) => handleToggleWishlist(e, product)}>
               {isLiked ? <IoHeart className="icon-filled-red" /> : <IoHeartOutline />}
@@ -53,25 +52,25 @@ function ProductsList() {
 
   return (
     <>
-      <section className="sekciya-tovarov">
+      <section className="sekciya-tovarov" id="new-arrivals" data-scroll>
         <h2 className="zagolovok-sekcii">NEW ARRIVALS</h2>
         <div className="setka-tovarov">
           {newProducts.map(renderCard)}
         </div>
         <div className="centr-knopka">
-          <Link to="#">View All</Link>
+          <Link to="/shop">View All</Link>
         </div>
       </section>
       
       <hr className="liniya-razdelitela" />
 
-      <section className="sekciya-tovarov">
+      <section className="sekciya-tovarov" id="top-selling" data-scroll>
         <h2 className="zagolovok-sekcii">TOP SELLING</h2>
         <div className="setka-tovarov">
           {topProducts.map(renderCard)}
         </div>
         <div className="centr-knopka">
-          <Link to="#">View All</Link>
+          <Link to="/shop">View All</Link>
         </div>
       </section>
     </>

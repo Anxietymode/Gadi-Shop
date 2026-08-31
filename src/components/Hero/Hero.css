@@ -1,6 +1,47 @@
 .glavniy-baner {
-  background-color: #F2F0F1;
+  background:
+    radial-gradient(800px 500px at 20% -10%, rgba(255, 255, 255, 0.06), transparent 60%),
+    radial-gradient(700px 500px at 95% 20%, rgba(255, 255, 255, 0.04), transparent 60%),
+    var(--bg-deep);
   padding: 40px 20px 0 20px;
+  border-bottom: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+}
+
+.aura {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.aura-1 {
+  width: 420px;
+  height: 420px;
+  top: -140px;
+  left: -100px;
+  background: rgba(255, 255, 255, 0.08);
+  animation: parivanie 12s ease-in-out infinite;
+}
+
+.aura-2 {
+  width: 380px;
+  height: 380px;
+  bottom: -160px;
+  right: 8%;
+  background: rgba(255, 255, 255, 0.05);
+  animation: parivanie 16s ease-in-out infinite reverse;
+}
+
+@keyframes parivanie {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(46px, 34px) scale(1.12);
+  }
 }
 
 .vnutri-banera {
@@ -9,6 +50,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: relative;
+  z-index: 1;
 }
 
 .levaya-chast {
@@ -16,15 +59,68 @@
   padding-bottom: 40px;
 }
 
+.levaya-chast > * {
+  opacity: 0;
+  animation: vhodElementa 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.levaya-chast .ogromniy-zagolovok { animation-delay: 0.1s; }
+.levaya-chast .malenkiy-text { animation-delay: 0.35s; }
+.levaya-chast .knopka-v-magazine { animation-delay: 0.55s; }
+.levaya-chast .nashi-cifri { animation-delay: 0.75s; }
+
+@keyframes vhodElementa {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .ogromniy-zagolovok {
   font-size: 64px;
   font-weight: 900;
   line-height: 1;
   margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+}
+
+.ogromniy-zagolovok span {
+  color: var(--neon);
+  text-shadow: 0 0 20px var(--neon-glow);
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.migayushchiy-kursor {
+  margin-left: 4px;
+  color: #ffffff;
+  text-shadow: 0 0 10px #ffffff;
+  animation: miganie-kursora 0.6s step-end infinite;
+}
+
+@keyframes miganie-kursora {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .levaya-chast > * {
+    opacity: 1;
+    animation: none;
+  }
+  .aura,
+  .knopka-v-magazine::before {
+    animation: none;
+  }
 }
 
 .malenkiy-text {
-  color: #666;
+  color: var(--text-muted);
   margin-bottom: 30px;
   max-width: 500px;
   line-height: 1.5;
@@ -32,13 +128,60 @@
 
 .knopka-v-magazine {
   display: inline-block;
-  background: #000;
-  color: #fff;
+  background: linear-gradient(90deg, var(--neon), var(--red-deep));
+  color: #0a0a0c;
   padding: 15px 40px;
   border-radius: 50px;
   text-decoration: none;
-  font-weight: 500;
+  font-weight: 700;
   margin-bottom: 40px;
+  box-shadow: 0 0 22px var(--neon-glow);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.knopka-v-magazine::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50px;
+  box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.28);
+  animation: puls-knopki 2.4s ease-out infinite;
+  pointer-events: none;
+}
+
+@keyframes puls-knopki {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.28);
+  }
+  70% {
+    box-shadow: 0 0 0 18px rgba(255, 255, 255, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+  }
+}
+
+.knopka-v-magazine::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(10, 10, 12, 0.15), transparent);
+  transform: skewX(-20deg);
+  transition: left 0.6s ease;
+}
+
+.knopka-v-magazine:hover::after {
+  left: 150%;
+}
+
+.knopka-v-magazine:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 0 32px var(--neon-glow);
 }
 
 .nashi-cifri {
@@ -53,8 +196,12 @@
   margin: 0;
 }
 
+.cifra-item h2 {
+  color: var(--text);
+}
+
 .cifra-item p {
-  color: #666;
+  color: var(--text-muted);
   margin: 0;
   font-size: 14px;
 }
@@ -62,19 +209,7 @@
 .polochka {
   width: 1px;
   height: 50px;
-  background-color: #ccc;
-}
-
-.pravaya-chast-s-ludmi {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-}
-
-.fotka-modeley {
-  width: 100%;
-  max-width: 500px;
-  object-fit: cover;
+  background-color: var(--border);
 }
 
 @media (max-width: 1024px) {
@@ -87,6 +222,12 @@
   .vnutri-banera {
     flex-direction: column;
     text-align: center;
+  }
+
+  .krov-v-geroe .kaplya:nth-child(2),
+  .krov-v-geroe .kaplya:nth-child(3),
+  .krov-v-geroe .kaplya:nth-child(5) {
+    display: none;
   }
 
   .ogromniy-zagolovok {
@@ -108,15 +249,6 @@
   .w-full-mobile {
     width: 100%;
     text-align: center;
-  }
-
-  .pravaya-chast-s-ludmi {
-    width: 100%;
-  }
-
-  .fotka-modeley {
-    max-width: 400px;
-    width: 100%;
   }
 }
 
@@ -152,10 +284,6 @@
 
   .polochka {
     height: 35px;
-  }
-
-  .fotka-modeley {
-    max-width: 320px;
   }
 }
 

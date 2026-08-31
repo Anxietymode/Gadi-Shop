@@ -2,24 +2,29 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
+  position: relative;
 }
 
 .hlebnie-kroshki {
-  color: #666;
+  color: var(--text-muted);
   margin-bottom: 30px;
   font-size: 14px;
+  position: relative;
+  z-index: 1;
 }
 
 .hlebnie-kroshki span {
-  color: #000;
+  color: var(--neon);
   font-weight: 500;
+  text-shadow: 0 0 10px var(--neon-glow);
 }
-
 
 .verh-tovara {
   display: flex;
   gap: 40px;
   margin-bottom: 60px;
+  position: relative;
+  z-index: 1;
 }
 
 .galereya-tovara {
@@ -36,7 +41,8 @@
 }
 
 .mini-kartinka {
-  background-color: #F0EEED;
+  background: linear-gradient(180deg, var(--surface-2), var(--card));
+  border: 1px solid var(--border);
   border-radius: 20px;
   cursor: pointer;
   height: 150px;
@@ -45,34 +51,24 @@
   justify-content: center;
   overflow: hidden;
   border: 2px solid transparent;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .mini-kartinka:hover {
-  border-color: #000;
-}
-
-.mini-kartinka img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  border-color: var(--neon);
+  box-shadow: 0 0 14px var(--neon-glow);
 }
 
 .glavnaya-kartinka {
   flex: 1;
-  background-color: #F0EEED;
+  background: linear-gradient(180deg, var(--surface-2), var(--card));
+  border: 1px solid var(--border);
   border-radius: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
 }
-
-.glavnaya-kartinka img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
 
 .info-o-tovare {
   flex: 1;
@@ -105,35 +101,41 @@
   gap: 15px;
 }
 
+.cena-tovara .star-icon.filled, .zvezdi-tovara .star-icon.filled {
+  color: var(--neon);
+  filter: drop-shadow(0 0 6px var(--neon-glow));
+}
+
 .staraya-cena {
-  color: #999;
+  color: var(--text-dim);
   text-decoration: line-through;
   font-size: 24px;
 }
 
 .skidka-teg {
-  background-color: #ffcccc;
-  color: #ff0000;
+  background-color: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--neon);
+  color: var(--neon);
   font-size: 14px;
   padding: 5px 15px;
   border-radius: 20px;
+  text-shadow: 0 0 8px var(--neon-glow);
 }
 
 .opisanie-text {
-  color: #666;
+  color: var(--text-muted);
   line-height: 1.6;
   margin-bottom: 20px;
 }
 
 .razdelitel {
   border: none;
-  border-top: 1px solid #eee;
+  border-top: 1px solid var(--border);
   margin: 20px 0;
 }
 
-
 .vibor-cveta p, .vibor-razmera p {
-  color: #666;
+  color: var(--text-muted);
   margin-bottom: 15px;
 }
 
@@ -146,7 +148,7 @@
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  border: none;
+  border: 1px solid var(--border);
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -159,25 +161,28 @@
 .cvet-3 { background-color: #000033; }
 
 .aktivniy-cvet {
-  border: 2px solid #000;
+  border: 2px solid var(--neon);
   padding: 2px;
   background-clip: content-box;
+  box-shadow: 0 0 12px var(--neon-glow);
 }
 
 .star-icon {
   font-size: 16px;
-  color: #ccc;
+  color: var(--text-dim);
 }
 
 .star-icon.filled {
-  color: #ffc107;
+  color: var(--neon);
+  filter: drop-shadow(0 0 6px var(--neon-glow));
 }
 
 .galochka-icon {
-  color: #4caf50;
+  color: var(--neon);
   font-size: 16px;
   vertical-align: middle;
   margin-left: 4px;
+  filter: drop-shadow(0 0 6px var(--neon-glow));
 }
 
 .knopki-razmerov {
@@ -187,20 +192,27 @@
 }
 
 .knopka-razmer {
-  background-color: #F0F0F0;
-  border: none;
+  background-color: var(--surface-2);
+  border: 1px solid var(--border);
   padding: 12px 24px;
   border-radius: 50px;
-  color: #666;
+  color: var(--text-muted);
   cursor: pointer;
   font-weight: 500;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.knopka-razmer:hover {
+  border-color: var(--neon);
+  color: var(--neon);
 }
 
 .aktivniy-razmer {
-  background-color: #000;
-  color: #fff;
+  background-color: var(--neon);
+  border-color: var(--neon);
+  color: #0a0a0c;
+  box-shadow: 0 0 14px var(--neon-glow);
 }
-
 
 .blok-pokupki {
   display: flex;
@@ -212,7 +224,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #F0F0F0;
+  background-color: var(--surface-2);
+  border: 1px solid var(--border);
   border-radius: 50px;
   width: 150px;
   padding: 10px 20px;
@@ -225,39 +238,40 @@
   cursor: pointer;
   font-weight: bold;
   padding: 0 4px;
+  color: var(--text);
   transition: color 0.15s ease;
 }
 
 .kolichestvo button:hover {
-  color: #666;
+  color: var(--neon);
 }
 
 .knopka-v-korzinu {
   flex: 1;
-  background-color: #000;
-  color: #fff;
+  background: linear-gradient(90deg, var(--neon), var(--red-deep));
+  color: #0a0a0c;
   border: none;
   border-radius: 50px;
   font-weight: bold;
   font-size: 16px;
   cursor: pointer;
-  transition: background-color 0.2s ease, transform 0.15s ease;
+  box-shadow: 0 0 18px var(--neon-glow);
+  transition: transform 0.15s ease, box-shadow 0.2s ease;
 }
 
 .knopka-v-korzinu:hover {
-  background-color: #333;
   transform: scale(1.02);
+  box-shadow: 0 0 28px var(--neon-glow);
 }
 
 .knopka-v-korzinu:active {
   transform: scale(0.98);
 }
 
-
 .vkladki-tovara {
   display: flex;
   justify-content: space-around;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid var(--border);
   margin-bottom: 40px;
 }
 
@@ -265,18 +279,23 @@
   background: none;
   border: none;
   font-size: 18px;
-  color: #666;
+  color: var(--text-muted);
   padding-bottom: 20px;
   cursor: pointer;
   flex: 1;
+  transition: color 0.2s ease;
+}
+
+.vkladka:hover {
+  color: var(--neon);
 }
 
 .aktivnaya-vkladka {
-  color: #000;
+  color: var(--neon);
   font-weight: bold;
-  border-bottom: 2px solid #000;
+  border-bottom: 2px solid var(--neon);
+  text-shadow: 0 0 10px var(--neon-glow);
 }
-
 
 .shapka-otzivov {
   display: flex;
@@ -286,7 +305,7 @@
 }
 
 .cifra-otzivov {
-  color: #666;
+  color: var(--text-muted);
   font-size: 16px;
   font-weight: normal;
 }
@@ -297,8 +316,8 @@
 }
 
 .knopka-filtr {
-  background-color: #F0F0F0;
-  border: none;
+  background-color: var(--surface-2);
+  border: 1px solid var(--border);
   border-radius: 50%;
   width: 40px;
   height: 40px;
@@ -307,29 +326,43 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  color: var(--text);
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.knopka-filtr:hover {
+  color: var(--neon);
+  border-color: var(--neon);
 }
 
 .vipadashka {
-  background-color: #F0F0F0;
-  border: none;
+  background-color: var(--surface-2);
+  border: 1px solid var(--border);
   padding: 10px 20px;
   border-radius: 50px;
   outline: none;
+  color: var(--text);
+}
+
+.vipadashka option {
+  background: var(--surface);
 }
 
 .napisat-otziv {
-  background-color: #000;
-  color: #fff;
+  background: linear-gradient(90deg, var(--neon), var(--red-deep));
+  color: #0a0a0c;
   border: none;
   padding: 10px 25px;
   border-radius: 50px;
   font-weight: 500;
   cursor: pointer;
-  transition: background-color 0.2s ease;
+  box-shadow: 0 0 14px var(--neon-glow);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .napisat-otziv:hover {
-  background-color: #333;
+  transform: translateY(-1px);
+  box-shadow: 0 0 24px var(--neon-glow);
 }
 
 .setka-otzivov {
@@ -340,9 +373,16 @@
 }
 
 .kartochka-otziva {
-  border: 1px solid #eee;
+  background: var(--card);
+  border: 1px solid var(--border);
   padding: 30px;
   border-radius: 20px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.kartochka-otziva:hover {
+  border-color: var(--neon);
+  box-shadow: 0 0 20px var(--neon-glow);
 }
 
 .verh-otziva {
@@ -355,20 +395,20 @@
   background: none;
   border: none;
   font-size: 20px;
-  color: #666;
+  color: var(--text-dim);
   cursor: pointer;
   display: flex;
   align-items: center;
 }
 
 .kartochka-otziva p {
-  color: #666;
+  color: var(--text-muted);
   line-height: 1.5;
   margin-bottom: 20px;
 }
 
 .data-otziva {
-  color: #999;
+  color: var(--text-dim);
   font-size: 14px;
 }
 
@@ -379,19 +419,20 @@
 
 .knopka-zagruzit-eshe button {
   background: none;
-  border: 1px solid #ccc;
+  border: 1px solid var(--border);
   padding: 12px 40px;
   border-radius: 50px;
   font-weight: 500;
   cursor: pointer;
-  transition: background-color 0.2s ease, border-color 0.2s ease;
+  color: var(--text);
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
 }
 
 .knopka-zagruzit-eshe button:hover {
-  background-color: #f5f5f5;
-  border-color: #999;
+  background-color: var(--surface-2);
+  border-color: var(--neon);
+  color: var(--neon);
 }
-
 
 .pohozhie-tovari {
   max-width: 1200px;
@@ -403,6 +444,13 @@
   font-size: 40px;
   font-weight: 900;
   margin-bottom: 40px;
+  text-transform: uppercase;
+}
+
+.zagolovok-pohozhih::after {
+  content: ' ✦';
+  color: var(--neon);
+  text-shadow: 0 0 16px var(--neon-glow);
 }
 
 .setka-pohozhih {
@@ -411,6 +459,175 @@
   gap: 20px;
 }
 
+.vnutri-vkladki {
+  max-width: 1200px;
+  margin: 0 auto 60px;
+}
+
+.vnutri-vkladki h3 {
+  font-size: 28px;
+  font-weight: 800;
+  margin-bottom: 15px;
+}
+
+.spisok-harakteristik {
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+}
+
+.spisok-harakteristik li {
+  position: relative;
+  padding: 8px 0 8px 28px;
+  color: var(--text-muted);
+}
+
+.spisok-harakteristik li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--neon);
+}
+
+.forma-otziva {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 24px;
+  margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.forma-otziva p {
+  font-weight: 600;
+  margin: 0;
+}
+
+.zvezdi-formi {
+  display: flex;
+  gap: 4px;
+}
+
+.zvezdi-formi button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 22px;
+  padding: 0;
+  color: var(--text-dim);
+  transition: transform 0.15s ease;
+}
+
+.zvezdi-formi button:hover {
+  transform: scale(1.2);
+}
+
+.forma-otziva input,
+.forma-otziva textarea {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 12px 16px;
+  color: var(--text);
+  font: inherit;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.forma-otziva input:focus,
+.forma-otziva textarea:focus {
+  border-color: var(--neon);
+  box-shadow: 0 0 12px var(--neon-glow);
+}
+
+.forma-otziva textarea {
+  min-height: 90px;
+  resize: vertical;
+}
+
+.forma-otziva .knopka-v-korzinu {
+  flex: none;
+  padding: 14px;
+}
+
+.noviy-otziv-teg {
+  background: var(--surface-2);
+  border: 1px solid var(--neon);
+  color: var(--neon);
+  font-size: 11px;
+  padding: 2px 10px;
+  border-radius: 20px;
+  margin-right: auto;
+  margin-left: 10px;
+}
+
+.spisok-fak {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.fak-vopros {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: border-color 0.2s ease;
+}
+
+.fak-vopros:has(.otkritiy) {
+  border-color: var(--neon);
+}
+
+.fak-zagolovok {
+  width: 100%;
+  background: none;
+  border: none;
+  color: var(--text);
+  font: inherit;
+  font-weight: 600;
+  font-size: 16px;
+  text-align: left;
+  padding: 18px 22px;
+  cursor: pointer;
+  position: relative;
+  transition: color 0.2s ease;
+}
+
+.fak-zagolovok::after {
+  content: '+';
+  position: absolute;
+  right: 22px;
+  font-size: 20px;
+  color: var(--text-muted);
+  transition: transform 0.25s ease;
+}
+
+.fak-zagolovok.otkritiy {
+  color: var(--neon);
+}
+
+.fak-zagolovok.otkritiy::after {
+  content: '−';
+}
+
+.fak-otvet {
+  color: var(--text-muted);
+  line-height: 1.5;
+  padding: 0 22px 18px;
+  margin: 0;
+}
+
+.hlebnie-kroshki a {
+  color: var(--text-muted);
+  text-decoration: none;
+}
+
+.hlebnie-kroshki a:hover {
+  color: var(--neon);
+}
 
 @media (max-width: 1024px) {
   .verh-tovara {
